@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class CustomColors {
-  CustomColors._();
+class CColors {
+  CColors._();
 
   //app basic color
-  static const Color primary = Color(0XFFef8354);
+  static const Color primary = Color(0XFFC85250);
   static const Color secondary = Color(0xFF4f5d75);
   static const Color assent = Color(0XFFf2e9e4);
 
   //gradient color
   static const Gradient linearGradient = LinearGradient(
     colors: [
-      Color(0XFFef8354),
+      Color(0XFFC85250),
       Color(0XFFf2e9e4),
     ],
     begin: Alignment.topLeft,
@@ -33,7 +33,7 @@ class CustomColors {
   static const Color containerDark = Color(0XFF343a40);
 
   //button Colors
-  static const Color buttonPrimary = Color(0xFFef8354);
+  static const Color buttonPrimary = Color(0XFFC85250);
   static const Color buttonSecondary = Color(0XFFbfc0c0);
   static const Color buttonDisabled = Color(0XFFdee2e6);
 
@@ -42,7 +42,7 @@ class CustomColors {
   static const Color borderSecondary = Color(0XFFced4da);
 
   //Error and Validation Colors
-  static const Color error = Color(0XFFdc3545);
+  static const Color error = Color(0XFFC85250);
   static const Color success = Color(0XFF28a745);
   static const Color warning = Color(0XFFffc107);
   static const Color info = Color(0XFF17a2b8);

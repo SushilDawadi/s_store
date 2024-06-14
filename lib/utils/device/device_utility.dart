@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class CustomDeviceUtils {
+class CDeviceUtils {
   static void hideKeyboard(BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
@@ -51,6 +51,10 @@ class CustomDeviceUtils {
 
   static bool isAndroid() {
     return Platform.isAndroid;
+  }
+
+  static double getAppBarHeight() {
+    return kToolbarHeight;
   }
 
   static void launchUrl(String url) async {}

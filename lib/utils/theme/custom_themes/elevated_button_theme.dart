@@ -7,11 +7,11 @@ class CustomElevatedButton {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: Colors.orange,
+      backgroundColor: const Color(0XFFC85250),
       disabledBackgroundColor: Colors.grey,
       disabledForegroundColor: Colors.grey,
       side: const BorderSide(
-        color: Colors.orange,
+        color: Color(0XFFC85250),
       ),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
@@ -28,12 +28,10 @@ class CustomElevatedButton {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: Colors.orange,
+      backgroundColor: const Color(0XFFC85250),
       disabledBackgroundColor: Colors.grey,
       disabledForegroundColor: Colors.grey,
-      side: const BorderSide(
-        color: Colors.orange,
-      ),
+      side: const BorderSide(color: Color(0XFFC85250)),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
         fontSize: 16,
