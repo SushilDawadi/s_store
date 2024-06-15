@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:s_store/featues/authentication/controllers.onboarding/onboarding_controller.dart';
+import 'package:s_store/featues/authentication/controllers/onboarding_controller.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/device/device_utility.dart';
@@ -14,10 +14,10 @@ class OnBoardingDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = onBoardingController.instance;
-    final dark = CHelperFunctions.isDarkMode(context);
+    final dark = HelperFunctions.isDarkMode(context);
     return Positioned(
-        left: CSizes.defaultSpace,
-        bottom: CDeviceUtils.getBottomNaviagationBarHeight(context) + 25,
+        left: Sizes.defaultSpace,
+        bottom: DeviceUtils.getBottomNaviagationBarHeight(context) + 25,
         child: SmoothPageIndicator(
           controller: controller.pageController,
           onDotClicked: controller.dotNavigationClick,

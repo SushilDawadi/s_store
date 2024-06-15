@@ -17,12 +17,12 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(CSizes.defaultSpace),
+      padding: const EdgeInsets.all(Sizes.defaultSpace),
       child: Column(
         children: [
           SizedBox(
-            height: CHelperFunctions.screenHeight() * 0.6,
-            width: CHelperFunctions.screenWidth() * 0.8,
+            height: HelperFunctions.screenHeight() * 0.6,
+            width: HelperFunctions.screenWidth() * 0.8,
             child: Lottie.asset(lottieImg),
           ),
           Text(
@@ -30,7 +30,7 @@ class OnBoardingPage extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineMedium,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: CSizes.spaceBtwItems),
+          const SizedBox(height: Sizes.spaceBtwItems),
           Text(
             onBoardingSubtitle,
             style: Theme.of(context).textTheme.bodyMedium,

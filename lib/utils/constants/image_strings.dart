@@ -1,10 +1,11 @@
-class CImages {
-  static const darkAppLogo = "";
-  static const lightAppLogo = "";
+class Images {
+  static const darkAppLogo = "assets/logos/S_Store.png";
+  static const lightAppLogo = "assets/logos/S_Store.png";
 
   //social logos
-  static const googleLogo = "";
-  static const facebookLogo = "";
+  static const googleLogo = "assets/logos/google_logo.png";
+  static const facebookLogo = "assets/logos/facebook_logo.png";
+  static const appleLogo = "assets/logos/apple_logo.png";
   static const twitterLogo = "";
   static const linkedinLogo = "";
   static const githubLogo = "";

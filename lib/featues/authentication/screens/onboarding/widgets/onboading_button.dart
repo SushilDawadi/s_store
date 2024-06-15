@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:s_store/featues/authentication/controllers.onboarding/onboarding_controller.dart';
+import 'package:s_store/featues/authentication/controllers/onboarding_controller.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/device/device_utility.dart';
@@ -13,10 +13,10 @@ class onBoardingElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = CHelperFunctions.isDarkMode(context);
+    final dark = HelperFunctions.isDarkMode(context);
     return Positioned(
-      right: CSizes.defaultSpace,
-      bottom: CDeviceUtils.getBottomNaviagationBarHeight(context) + 25,
+      right: Sizes.defaultSpace,
+      bottom: DeviceUtils.getBottomNaviagationBarHeight(context) + 25,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
@@ -24,7 +24,7 @@ class onBoardingElevatedButton extends StatelessWidget {
         ),
         child: const Icon(
           Iconsax.arrow_right_3,
-          size: CSizes.iconMd,
+          size: Sizes.iconMd,
         ),
         onPressed: () {
           onBoardingController.instance.nextPage();

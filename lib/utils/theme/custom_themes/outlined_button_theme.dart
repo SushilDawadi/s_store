@@ -8,7 +8,7 @@ class CustomOutlineButtonTheme {
       elevation: 0,
       foregroundColor: Colors.black,
       side: const BorderSide(
-        color: Colors.orange,
+        color: Color(0XFFC85250),
       ),
       textStyle: const TextStyle(
         fontSize: 16,
@@ -30,7 +30,7 @@ class CustomOutlineButtonTheme {
       elevation: 0,
       foregroundColor: Colors.white,
       side: const BorderSide(
-        color: Colors.orange,
+        color: Color(0XFFC85250),
       ),
       textStyle: const TextStyle(
         fontSize: 16,
