@@ -15,8 +15,9 @@ class TextStrings {
 
   //Authentication Form Text
   static const String firstame = "First Name";
-  static const String lastname = "Last Name";
   static const String password = "Password";
+  static const String lastname = "Last Name";
+  static const String username = "Username";
   static const String email = "E-Mail";
   static const String rememberMe = "Remember Me";
   static const String confirmPassword = "Confirm Password";
