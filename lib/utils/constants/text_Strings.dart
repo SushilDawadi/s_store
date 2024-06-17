@@ -59,4 +59,5 @@ class TextStrings {
   static const passwordResetSent = "Password Reset Email Sent";
   static const passwordResetSentSubtitle =
       "We have sent you an email with instructions on how to reset your password. If you don't receive it shortly, check your spam folder";
+  static const appBarTitle = "Great day for shopping!";
 }

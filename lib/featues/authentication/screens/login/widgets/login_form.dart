@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/button.dart';
 import 'package:s_store/featues/authentication/screens/sign_up/sign_up.dart';
+import 'package:s_store/navigation_menu.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/constants/text_Strings.dart';
 
@@ -60,7 +61,11 @@ class LoginForm extends StatelessWidget {
               //Sign in button
 
               CustomButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(
+                    () => const NavigationMenu(),
+                  );
+                },
                 text: TextStrings.signIn,
                 isFilled: true,
               ),
@@ -78,8 +83,6 @@ class LoginForm extends StatelessWidget {
               ),
 
               //
-              
-
             ],
           ),
         ),
