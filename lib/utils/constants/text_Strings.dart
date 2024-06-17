@@ -19,13 +19,15 @@ class TextStrings {
   static const String lastname = "Last Name";
   static const String username = "Username";
   static const String email = "E-Mail";
+  static const String continue_ = "Continue";
   static const String rememberMe = "Remember Me";
   static const String confirmPassword = "Confirm Password";
   static const String newPassword = "New Password";
-  static const String forgetPassword = "Forget Password?";
+  static const String forgetPassword = "Forget Password";
   static const String createAccount = "Create Account";
   static const String phoneNumber = "Phone Number";
   static const String signIn = "Sign In";
+  static const String submit = "Submit";
   static const String orSignInWith = "Or sign in With";
   static const String orSignUpWith = "Or sign up With";
   static const String iAgreeTo = "I agree to";
@@ -33,7 +35,13 @@ class TextStrings {
   static const String termsOfUse = "Terms of Use";
   static const String verificationCode = "Verification Code";
   static const String resendEmail = "Resend Email";
-
+  static const String verifyYourEmail = "Verify Your email address!";
+  static const String verifyYourEmailSubtitle =
+      "Congratulations! You have successfully registered. Please confirm your email address to continue.";
+  static const String accountCreateSuccessfully =
+      "Your account created Successfully!";
+  static const String accountCreateSuccessfullySubtitle =
+      "You have successfully created your account. Please verify your email address to continue.";
   //Authentication screen texts strings
   static const String loginTitle = "Welcome Back,";
   static const String loginSubtitle =
@@ -48,4 +56,7 @@ class TextStrings {
   static const String confirmEmail = "Confirm your email";
   static const String confirmEmailSubtitle =
       "Congratulations! You have successfully registered. Please confirm your email address to continue.";
+  static const passwordResetSent = "Password Reset Email Sent";
+  static const passwordResetSentSubtitle =
+      "We have sent you an email with instructions on how to reset your password. If you don't receive it shortly, check your spam folder";
 }

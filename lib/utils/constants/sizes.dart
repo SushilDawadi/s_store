@@ -66,4 +66,7 @@ class Sizes {
 
   //Grid view Spacing
   static const double gridViewSpacing = 16.0;
+
+  //lootie size
+  static const double lottieSize = 300.0;
 }

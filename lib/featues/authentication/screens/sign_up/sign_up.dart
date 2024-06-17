@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:s_store/common/common.widgets/button.dart';
+import 'package:s_store/common/common.widgets/divider.dart';
+import 'package:s_store/common/common.widgets/social_buttons.dart';
+import 'package:s_store/featues/authentication/screens/verify_email/verify.dart';
 import 'package:s_store/utils/constants/colors.dart';
+import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/constants/text_Strings.dart';
 
@@ -22,12 +28,10 @@ class SignUp extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Text(
-                    TextStrings.signUpTitle,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                    // textAlign: TextAlign.center,
-                  ),
+                Text(
+                  TextStrings.signUpTitle,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                  // textAlign: TextAlign.center,
                 ),
                 const SizedBox(
                   height: Sizes.spaceBtwSections,
@@ -75,7 +79,7 @@ class SignUp extends StatelessWidget {
                       TextFormField(
                         decoration: const InputDecoration(
                           labelText: TextStrings.email,
-                          prefixIcon: Icon(Iconsax.direct_inbox),
+                          prefixIcon: Icon(Iconsax.direct_right),
                         ),
                       ),
                       const SizedBox(
@@ -149,6 +153,42 @@ class SignUp extends StatelessWidget {
                       ),
                       const SizedBox(
                         height: Sizes.spaceBtwSections,
+                      ),
+                      CustomButton(
+                        text: TextStrings.createAccount,
+                        onPressed: () {
+                          Get.to(() => const VerifyEmail());
+                        },
+                        isFilled: true,
+                      ),
+                      const SizedBox(
+                        height: Sizes.spaceBtwItems,
+                      ),
+                      const SizedBox(
+                        height: Sizes.spaceBtwItems,
+                      ),
+                      const FormDivider(
+                        dividerText: TextStrings.orSignUpWith,
+                      ),
+                      const SizedBox(
+                        height: Sizes.spaceBtwItems,
+                      ),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SocialButtons(logoString: Images.googleLogo),
+                          SizedBox(
+                            width: Sizes.spaceBtwItems,
+                          ),
+                          SocialButtons(logoString: Images.facebookLogo),
+                          SizedBox(
+                            width: Sizes.spaceBtwItems,
+                          ),
+                          SocialButtons(logoString: Images.appleLogo),
+                          SizedBox(
+                            width: Sizes.spaceBtwItems,
+                          ),
+                        ],
                       ),
                     ],
                   ),

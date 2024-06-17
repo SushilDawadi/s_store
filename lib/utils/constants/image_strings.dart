@@ -16,4 +16,6 @@ class Images {
   static const lottieShopping =
       "assets/animations/on_boarding/woman-shopping-online.json";
   static const lottieDelivery = "assets/animations/on_boarding/delivery.json";
+  static const verifyEmail = "assets/animations/on_boarding/email_verify.json";
+  static const success = "assets/animations/on_boarding/success.json";
 }
