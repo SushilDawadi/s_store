@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
 import 'package:s_store/common/common.widgets/design/circular_design_container.dart';
 import 'package:s_store/common/common.widgets/design/curved_edges.dart';
+import 'package:s_store/common/common.widgets/heading.dart';
+import 'package:s_store/common/search_bar.dart';
 import 'package:s_store/utils/constants/colors.dart';
+import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/constants/text_Strings.dart';
 import 'package:s_store/utils/helpers/helper_functions.dart';
 
@@ -109,6 +110,36 @@ class HomeScreen extends StatelessWidget {
                               )
                             ],
                           ),
+
+                          // search bar
+                          const SizedBox(
+                            height: Sizes.spaceBtwItems,
+                          ),
+                          const CustomSearchBar(
+                            text: "Search for products...",
+                            color: CColors.white,
+                          ),
+
+                          //headding text
+                          const CustomHeading(text: "Popular Categories"),
+
+                          SizedBox(
+                            height: 70,
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: 5,
+                                itemBuilder: (_, context) {
+                                  return Container(
+                                    width: 70,
+                                    padding: EdgeInsets.all(Sizes.sm),
+                                    decoration: BoxDecoration(
+                                      color: CColors.white,
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                  );
+                                }),
+                          )
                         ],
                       )
                     ],
