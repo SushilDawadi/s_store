@@ -1,11 +1,20 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
 import 'package:s_store/common/common.widgets/design/circular_design_container.dart';
 import 'package:s_store/common/common.widgets/design/curved_edges.dart';
 import 'package:s_store/common/common.widgets/heading.dart';
+import 'package:s_store/common/common.widgets/rounded_image.dart';
 import 'package:s_store/common/search_bar.dart';
+import 'package:s_store/featues/shop/controllers/home_controller.dart';
+import 'package:s_store/featues/shop/screens/home/widgets/category_view.dart';
 import 'package:s_store/utils/constants/colors.dart';
+import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/constants/text_Strings.dart';
 import 'package:s_store/utils/helpers/helper_functions.dart';
@@ -15,6 +24,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeController = Get.put(HomeController());
     return Scaffold(
       backgroundColor:
           HelperFunctions.isDarkMode(context) ? CColors.dark : CColors.white,
@@ -123,23 +133,7 @@ class HomeScreen extends StatelessWidget {
                           //headding text
                           const CustomHeading(text: "Popular Categories"),
 
-                          SizedBox(
-                            height: 70,
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemCount: 5,
-                                itemBuilder: (_, context) {
-                                  return Container(
-                                    width: 70,
-                                    padding: EdgeInsets.all(Sizes.sm),
-                                    decoration: BoxDecoration(
-                                      color: CColors.white,
-                                      borderRadius: BorderRadius.circular(100),
-                                    ),
-                                  );
-                                }),
-                          )
+                          const CategoryView(),
                         ],
                       )
                     ],
@@ -147,6 +141,44 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+            CarouselSlider(
+              items: const [
+                RoundedCustomImage(
+                  imageUrl: Images.banner1,
+                ),
+                RoundedCustomImage(
+                  imageUrl: Images.banner2,
+                ),
+                RoundedCustomImage(
+                  imageUrl: Images.banner3,
+                ),
+              ],
+              options: CarouselOptions(
+                viewportFraction: 1,
+                onPageChanged: (index, reason) =>
+                    homeController.updateIndicator(index),
+              ),
+            ),
+            const SizedBox(
+              height: Sizes.spaceBtwItems,
+            ),
+            Center(
+                child: Obx(
+              () => Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  for (int i = 0; i < 3; i++)
+                    CircularDesignContainer(
+                      margin: const EdgeInsets.all(Sizes.sm / 2),
+                      backgroundColor: homeController.currentIndex.value == i
+                          ? CColors.primary
+                          : CColors.grey,
+                      width: 20,
+                      height: 4,
+                    ),
+                ],
+              ),
+            )),
           ],
         ),
       ),

@@ -18,4 +18,16 @@ class Images {
   static const lottieDelivery = "assets/animations/on_boarding/delivery.json";
   static const verifyEmail = "assets/animations/on_boarding/email_verify.json";
   static const success = "assets/animations/on_boarding/success.json";
+
+  //category icons
+  static const sport = "assets/icons/category/ball.png";
+  static const furniture = "assets/icons/category/furnitures.png";
+  static const laundry = "assets/icons/category/laundry.png";
+  static const cosmetic = "assets/icons/category/skincare.png";
+  static const toys = "assets/icons/category/toys.png";
+
+  //bannner images
+  static const banner1 = "assets/images/banner/banner1.png";
+  static const banner2 = "assets/images/banner/banner2.png";
+  static const banner3 = "assets/images/banner/banner3.png";
 }

@@ -15,7 +15,8 @@ class CustomSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(Sizes.defaultSpace),
+      padding: const EdgeInsets.symmetric(
+          horizontal: Sizes.defaultSpace, vertical: Sizes.sm),
       child: Container(
         width: HelperFunctions.screenWidth(),
         decoration: BoxDecoration(
