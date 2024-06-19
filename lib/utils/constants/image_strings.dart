@@ -30,4 +30,8 @@ class Images {
   static const banner1 = "assets/images/banner/banner1.png";
   static const banner2 = "assets/images/banner/banner2.png";
   static const banner3 = "assets/images/banner/banner3.png";
+
+  //product images
+  //laptop and macbook
+  static const product1 = "assets/images/products/macbook_product.jpeg";
 }

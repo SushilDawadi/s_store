@@ -5,7 +5,7 @@ class RoundedCustomImage extends StatelessWidget {
   const RoundedCustomImage(
       {super.key,
       this.width,
-      this.height = 180,
+      this.height,
       required this.imageUrl,
       this.applyImageRadius = true,
       this.border,
