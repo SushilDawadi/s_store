@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
 import 'package:s_store/common/common.widgets/design/circular_design_container.dart';
 import 'package:s_store/common/common.widgets/design/curved_edges.dart';
+import 'package:s_store/common/common.widgets/grid_view_layout.dart';
 import 'package:s_store/common/common.widgets/heading.dart';
 import 'package:s_store/common/common.widgets/product/product_card_vertical.dart';
 import 'package:s_store/common/search_bar.dart';
@@ -128,8 +129,17 @@ class HomeScreen extends StatelessWidget {
                           ),
 
                           //headding text
-                          const CustomHeading(text: "Popular Categories"),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: Sizes.defaultSpace,
+                                vertical: Sizes.defaultSpace / 2),
+                            child: CustomHeading(
+                              text: "Popular Categories",
+                              showButton: false,
+                            ),
+                          ),
 
+                          //category view
                           const CategoryView(),
                         ],
                       )
@@ -143,23 +153,25 @@ class HomeScreen extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: Sizes.defaultSpace),
               child: Column(
                 children: [
+                  //custom carousel
                   const CustomCarouselSlider(
                     banners: [Images.banner1, Images.banner2, Images.banner3],
                   ),
-                  GridView.builder(
-                      itemCount: 4,
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: Sizes.gridViewSpacing,
-                        mainAxisSpacing: Sizes.gridViewSpacing,
-                        mainAxisExtent: 288,
-                      ),
-                      itemBuilder: (_, index) {
-                        return const ProductCardVertical();
-                      }),
+                  //heading text
+                  CustomHeading(
+                    color: HelperFunctions.isDarkMode(context)
+                        ? CColors.white
+                        : CColors.dark,
+                    text: "Popular Products",
+                    showButton: true,
+                    onPressed: () {},
+                    buttonTitle: "View All",
+                  ),
+                  //product list
+
+                  GridViewLayout(
+                      itemCount: 2,
+                      itemBuilder: (_, index) => const ProductCardVertical())
                 ],
               ),
             )

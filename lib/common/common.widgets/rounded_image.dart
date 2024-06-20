@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 
 class RoundedCustomImage extends StatelessWidget {
-  const RoundedCustomImage(
-      {super.key,
-      this.width,
-      this.height,
-      required this.imageUrl,
-      this.applyImageRadius = true,
-      this.border,
-      this.fit = BoxFit.fill,
-      this.padding = const EdgeInsets.symmetric(horizontal: Sizes.md),
-      this.isNetworkImage = false,
-      this.onTap});
+  const RoundedCustomImage({
+    super.key,
+    this.width,
+    this.height,
+    required this.imageUrl,
+    this.applyImageRadius = true,
+    this.border,
+    this.fit = BoxFit.fill,
+    this.padding = EdgeInsets.zero,
+    this.isNetworkImage = false,
+    this.onTap,
+  });
 
   final double? width, height;
+
   final String imageUrl;
   final bool applyImageRadius;
   final BoxBorder? border;
@@ -26,9 +28,7 @@ class RoundedCustomImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        onTap;
-      },
+      onTap: onTap,
       child: Container(
         width: width,
         height: height,
@@ -41,8 +41,9 @@ class RoundedCustomImage extends StatelessWidget {
               ? BorderRadius.circular(10)
               : BorderRadius.circular(0),
           child: Image(
-            image:
-                isNetworkImage ? NetworkImage(imageUrl) : AssetImage(imageUrl),
+            image: isNetworkImage
+                ? NetworkImage(imageUrl)
+                : AssetImage(imageUrl) as ImageProvider,
             fit: fit,
           ),
         ),

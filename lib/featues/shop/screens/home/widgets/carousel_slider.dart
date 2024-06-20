@@ -17,8 +17,11 @@ class CustomCarouselSlider extends StatelessWidget {
     return Column(
       children: [
         CarouselSlider(
-          items:
-              banners.map((url) => RoundedCustomImage(imageUrl: url)).toList(),
+          items: banners
+              .map((url) => RoundedCustomImage(
+                    imageUrl: url,
+                  ))
+              .toList(),
           options: CarouselOptions(
             viewportFraction: 1,
             onPageChanged: (index, reason) =>

@@ -25,12 +25,12 @@ class CColors {
 
   //background color
   static const Color light = Color(0XFFdee2e6);
-  static const Color dark = Color(0XFF343a40);
+  static const Color dark = Color(0XFF222831);
   static const Color backgroundPrimary = Color(0XFFf8f9fa);
 
   //background container color
   static const Color containerLight = Color(0XFFf8f9fa);
-  static const Color containerDark = Color(0XFF343a40);
+  static const Color containerDark = Color(0XFF222831);
 
   //button Colors
   static const Color buttonPrimary = Color(0XFFC85250);

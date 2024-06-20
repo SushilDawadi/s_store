@@ -33,5 +33,5 @@ class Images {
 
   //product images
   //laptop and macbook
-  static const product1 = "assets/images/products/macbook_product.jpeg";
+  static const product1 = "assets/images/products/macbook_product.png";
 }

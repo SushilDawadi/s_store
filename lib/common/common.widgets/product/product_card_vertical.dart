@@ -28,6 +28,9 @@ class ProductCardVertical extends StatelessWidget {
         child: Column(
           children: [
             CustomRoundedContainer(
+              backgroundColor: dark
+                  ? CColors.dark.withOpacity(0.5)
+                  : CColors.light.withOpacity(0.5),
               height: 180,
               padding: const EdgeInsets.all(Sizes.sm),
               child: Stack(
@@ -57,19 +60,22 @@ class ProductCardVertical extends StatelessWidget {
                     ),
                   ),
                   //favorite icon
-                  const Positioned(
+                  Positioned(
                     top: 0,
                     right: 0,
                     child: CustomCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
+                      onPressed: () {},
+                      icon: dark ? Iconsax.heart : Iconsax.heart5,
+                      color: dark ? CColors.white : Colors.red,
+                      backgroundColor:
+                          dark ? Colors.transparent : CColors.white,
                     ),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: Sizes.sm),
+              padding: const EdgeInsets.only(left: Sizes.sm, top: Sizes.xxs),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -92,9 +98,9 @@ class ProductCardVertical extends StatelessWidget {
                         color: CColors.primary,
                         size: Sizes.iconSm,
                       ),
-                      const SizedBox(width: Sizes.sm),
                     ],
                   ),
+                  const SizedBox(height: Sizes.md),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
