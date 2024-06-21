@@ -18,7 +18,6 @@ class ProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [CustomShadow.verticalProductShadow],
@@ -31,7 +30,6 @@ class ProductCardVertical extends StatelessWidget {
               backgroundColor: dark
                   ? CColors.dark.withOpacity(0.5)
                   : CColors.light.withOpacity(0.5),
-              height: 180,
               padding: const EdgeInsets.all(Sizes.sm),
               child: Stack(
                 children: [
@@ -42,10 +40,9 @@ class ProductCardVertical extends StatelessWidget {
 
                   //sale tag
                   Positioned(
-                    top: 8,
                     child: CustomRoundedContainer(
                       radius: Sizes.sm,
-                      backgroundColor: Colors.yellow.withOpacity(0.7),
+                      backgroundColor: Colors.yellow.withOpacity(0.9),
                       padding: const EdgeInsets.symmetric(
                         horizontal: Sizes.sm,
                         vertical: Sizes.sm,
@@ -61,21 +58,20 @@ class ProductCardVertical extends StatelessWidget {
                   ),
                   //favorite icon
                   Positioned(
-                    top: 0,
+                    top: -10,
                     right: 0,
                     child: CustomCircularIcon(
-                      onPressed: () {},
-                      icon: dark ? Iconsax.heart : Iconsax.heart5,
-                      color: dark ? CColors.white : Colors.red,
-                      backgroundColor:
-                          dark ? Colors.transparent : CColors.white,
-                    ),
+                        onPressed: () {},
+                        icon: Iconsax.heart5,
+                        color: Colors.red,
+                        backgroundColor: Colors.transparent),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: Sizes.sm, top: Sizes.xxs),
+              padding:
+                  const EdgeInsets.only(left: Sizes.sm, top: Sizes.md / 1.25),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
