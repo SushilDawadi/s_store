@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
+import 'package:s_store/common/common.widgets/cart_counter.dart';
 import 'package:s_store/common/common.widgets/design/circular_design_container.dart';
 import 'package:s_store/common/common.widgets/design/curved_edges.dart';
 import 'package:s_store/common/common.widgets/grid_view_layout.dart';
@@ -83,49 +84,18 @@ class HomeScreen extends StatelessWidget {
                                 )
                               ],
                             ),
-                            actions: [
-                              Stack(
-                                children: [
-                                  IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Iconsax.shopping_bag,
-                                      color: CColors.white,
-                                    ),
-                                  ),
-                                  Positioned(
-                                    right: 0,
-                                    child: Container(
-                                      width: 20,
-                                      height: 20,
-                                      decoration: BoxDecoration(
-                                        color: CColors.dark,
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "5",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelLarge!
-                                              .apply(color: CColors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
+                            actions: const [CustomCartCounter()],
                           ),
 
                           // search bar
                           const SizedBox(
                             height: Sizes.spaceBtwItems,
                           ),
-                          const CustomSearchBar(
+                          CustomSearchBar(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: Sizes.defaultSpace),
+                            onTap: () {},
                             text: "Search for products...",
-                            color: CColors.white,
                           ),
 
                           //headding text
