@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/circular_icon.dart';
 import 'package:s_store/common/common.widgets/design/shadows.dart';
+import 'package:s_store/common/common.widgets/product/brand_title_with_verify.dart';
 import 'package:s_store/common/common.widgets/product/product_title_text.dart';
 import 'package:s_store/common/common.widgets/rounded_container.dart';
 import 'package:s_store/common/common.widgets/rounded_image.dart';
@@ -80,21 +81,9 @@ class ProductCardVertical extends StatelessWidget {
                     smallSize: true,
                   ),
                   const SizedBox(height: Sizes.sm),
-                  Row(
-                    children: [
-                      Text(
-                        'Nike',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(width: Sizes.xs),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: CColors.primary,
-                        size: Sizes.iconSm,
-                      ),
-                    ],
+                  const BrandTitleAndVerifyIcon(
+                    text: "Nike",
+                    iconColor: Colors.blue,
                   ),
                   const SizedBox(height: Sizes.md),
                   Row(
