@@ -17,6 +17,9 @@ class LoginForm extends StatelessWidget {
         Form(
           child: Column(
             children: [
+              const SizedBox(
+                height: Sizes.spaceBtwItems,
+              ),
               TextFormField(
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Iconsax.direct_right),
@@ -59,7 +62,9 @@ class LoginForm extends StatelessWidget {
                 ],
               ),
               //Sign in button
-
+              const SizedBox(
+                height: Sizes.spaceBtwSections,
+              ),
               CustomButton(
                 onPressed: () {
                   Get.to(

@@ -34,4 +34,6 @@ class Images {
   //product images
   //laptop and macbook
   static const product1 = "assets/images/products/macbook_product.png";
+  static const product2 = "assets/images/products/headphone.png";
+  static const product3 = "assets/images/products/iphone.png";
 }

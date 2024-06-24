@@ -32,7 +32,12 @@ class CustomHeading extends StatelessWidget {
           ),
         ),
         if (showButton)
-          TextButton(onPressed: onPressed, child: Text(buttonTitle!)),
+          TextButton(
+              onPressed: onPressed,
+              child: Text(
+                buttonTitle!,
+                style: TextStyle(color: Colors.blue),
+              )),
       ],
     );
   }
