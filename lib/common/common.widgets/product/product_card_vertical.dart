@@ -19,7 +19,7 @@ class ProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        padding: const EdgeInsets.all(1),
+        padding: const EdgeInsets.all(Sizes.xs),
         decoration: BoxDecoration(
           boxShadow: [CustomShadow.verticalProductShadow],
           borderRadius: BorderRadius.circular(Sizes.productItemRadius),
@@ -27,6 +27,7 @@ class ProductCardVertical extends StatelessWidget {
         ),
         child: Column(
           children: [
+            //product image and favorite icon
             CustomRoundedContainer(
               backgroundColor: dark
                   ? CColors.dark.withOpacity(0.5)
@@ -70,49 +71,56 @@ class ProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
+            //profile and brand name
+            const Padding(
+              padding: EdgeInsets.only(left: Sizes.sm, top: Sizes.md / 1.25),
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ProductTitleText(
+                      text: 'Gr',
+                      smallSize: true,
+                    ),
+                    SizedBox(height: Sizes.xs),
+                    BrandTitleAndVerifyIcon(
+                      text: "Nike",
+                      iconColor: Colors.blue,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const Spacer(),
+
+            //price tag and add to cart button
             Padding(
-              padding:
-                  const EdgeInsets.only(left: Sizes.sm, top: Sizes.md / 1.25),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              padding: const EdgeInsets.only(left: Sizes.sm),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const ProductTitleText(
-                    text: 'Green Nike Air Shoes',
-                    smallSize: true,
+                  Text(
+                    '\$35.5',
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
-                  const SizedBox(height: Sizes.sm),
-                  const BrandTitleAndVerifyIcon(
-                    text: "Nike",
-                    iconColor: Colors.blue,
-                  ),
-                  const SizedBox(height: Sizes.md),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '\$35.5',
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: CColors.dark,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(Sizes.borderRadiusLg),
-                              bottomRight:
-                                  Radius.circular(Sizes.borderRadiusLg)),
-                        ),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Iconsax.add),
-                          color: CColors.white,
-                          iconSize: Sizes.iconLg,
-                        ),
-                      )
-                    ],
-                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: CColors.dark,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(Sizes.borderRadiusLg),
+                          bottomRight: Radius.circular(Sizes.borderRadiusLg)),
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Iconsax.add),
+                      color: CColors.white,
+                      iconSize: Sizes.iconLg,
+                    ),
+                  )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

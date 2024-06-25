@@ -4,7 +4,9 @@ import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
 import 'package:s_store/common/common.widgets/cart_counter.dart';
 import 'package:s_store/common/common.widgets/design/circular_design_container.dart';
+import 'package:s_store/common/common.widgets/design/curved_edge_widget.dart';
 import 'package:s_store/common/common.widgets/design/curved_edges.dart';
+import 'package:s_store/common/common.widgets/design/custom_child_header.dart';
 import 'package:s_store/common/common.widgets/grid_view_layout.dart';
 import 'package:s_store/common/common.widgets/heading.dart';
 import 'package:s_store/common/common.widgets/product/product_card_vertical.dart';
@@ -30,89 +32,62 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ClipPath(
-              clipper: CustomCurvedEdges(),
+            CurvedEdgeWidget(
               child: Container(
                 color: CColors.primary,
                 padding: const EdgeInsets.all(0),
-                child: SizedBox(
-                  height: 400,
-                  child: Stack(
+                child: CustomDesignHeader(
+                  child: Column(
                     children: [
-                      Positioned(
-                        top: -150,
-                        left: -250,
-                        child: CircularDesignContainer(
-                          backgroundColor: CColors.white.withOpacity(0.1),
-                        ),
-                      ),
-                      Positioned(
-                        top: 100,
-                        left: -300,
-                        child: CircularDesignContainer(
-                          backgroundColor: CColors.white.withOpacity(0.1),
-                        ),
-                      ),
-                      Positioned(
-                        top: 100,
-                        right: -300,
-                        child: CircularDesignContainer(
-                          backgroundColor: CColors.white.withOpacity(0.1),
-                        ),
-                      ),
-                      // app bar
-                      Column(
-                        children: [
-                          CustomAppBar(
-                            showBackArrow: false,
-                            title: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  TextStrings.appBarTitle,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .apply(color: CColors.light),
-                                ),
-                                Text(
-                                  'Sushil Dawadi',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineSmall!
-                                      .apply(color: CColors.light),
-                                )
-                              ],
+                      CustomAppBar(
+                        showBackArrow: false,
+                        title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              TextStrings.appBarTitle,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .apply(color: CColors.light),
                             ),
-                            actions: const [CustomCartCounter()],
-                          ),
+                            Text(
+                              'Sushil Dawadi',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall!
+                                  .apply(color: CColors.light),
+                            )
+                          ],
+                        ),
+                        actions: const [CustomCartCounter()],
+                      ),
 
-                          // search bar
-                          const SizedBox(
-                            height: Sizes.spaceBtwItems,
-                          ),
-                          CustomSearchBar(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: Sizes.defaultSpace),
-                            onTap: () {},
-                            text: "Search for products...",
-                          ),
+                      // search bar
+                      const SizedBox(
+                        height: Sizes.spaceBtwItems,
+                      ),
+                      CustomSearchBar(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: Sizes.defaultSpace),
+                        onTap: () {},
+                        text: "Search for products...",
+                      ),
 
-                          //headding text
-                          const Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: Sizes.defaultSpace,
-                                vertical: Sizes.defaultSpace / 2),
-                            child: CustomHeading(
-                              text: "Popular Categories",
-                              showButton: false,
-                            ),
-                          ),
+                      //headding text
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Sizes.defaultSpace,
+                            vertical: Sizes.defaultSpace / 2),
+                        child: CustomHeading(
+                          text: "Popular Categories",
+                          showButton: false,
+                        ),
+                      ),
 
-                          //category view
-                          const CategoryView(),
-                        ],
-                      )
+                      //category view
+                      const CategoryView(),
+                      const SizedBox(height: Sizes.spaceBtwSections)
                     ],
                   ),
                 ),

@@ -22,6 +22,7 @@ class ProductTitleText extends StatelessWidget {
           : Theme.of(context).textTheme.titleSmall,
       maxLines: maxLines,
       textAlign: textAlign,
+      overflow: TextOverflow.ellipsis,
     );
   }
 }
