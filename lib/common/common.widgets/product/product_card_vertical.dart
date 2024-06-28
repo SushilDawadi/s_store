@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/circular_icon.dart';
 import 'package:s_store/common/common.widgets/design/shadows.dart';
 import 'package:s_store/common/common.widgets/product/brand_title_with_verify.dart';
 import 'package:s_store/common/common.widgets/product/product_title_text.dart';
+import 'package:s_store/featues/shop/screens/product_details/sale_tag.dart';
 import 'package:s_store/common/common.widgets/rounded_container.dart';
 import 'package:s_store/common/common.widgets/rounded_image.dart';
+import 'package:s_store/featues/shop/screens/product_details/product_details.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';
@@ -17,7 +20,9 @@ class ProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(() => const ProductDetails());
+      },
       child: Container(
         padding: const EdgeInsets.all(Sizes.xs),
         decoration: BoxDecoration(
@@ -41,23 +46,7 @@ class ProductCardVertical extends StatelessWidget {
                   ),
 
                   //sale tag
-                  Positioned(
-                    child: CustomRoundedContainer(
-                      radius: Sizes.sm,
-                      backgroundColor: Colors.yellow.withOpacity(0.9),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Sizes.sm,
-                        vertical: Sizes.sm,
-                      ),
-                      child: Text(
-                        '25%',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .apply(color: CColors.black),
-                      ),
-                    ),
-                  ),
+                  const Positioned(child: CustomSaleTag()),
                   //favorite icon
                   Positioned(
                     top: -10,

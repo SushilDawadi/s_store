@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 
 class RoundedCustomImage extends StatelessWidget {
@@ -13,6 +14,7 @@ class RoundedCustomImage extends StatelessWidget {
     this.padding = EdgeInsets.zero,
     this.isNetworkImage = false,
     this.onTap,
+    this.backgroundColor = Colors.transparent,
   });
 
   final double? width, height;
@@ -24,9 +26,11 @@ class RoundedCustomImage extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final bool isNetworkImage;
   final VoidCallback? onTap;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
+    final dark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -34,8 +38,9 @@ class RoundedCustomImage extends StatelessWidget {
         height: height,
         padding: padding,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Sizes.md),
-        ),
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(Sizes.md),
+            border: border),
         child: ClipRRect(
           borderRadius: applyImageRadius
               ? BorderRadius.circular(10)
