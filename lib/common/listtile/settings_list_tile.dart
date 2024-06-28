@@ -18,12 +18,16 @@ class CustomSettingListTile extends StatelessWidget {
   final VoidCallbackAction? onTap;
   @override
   Widget build(BuildContext context) {
+    final dark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Sizes.sm),
+      padding: const EdgeInsets.symmetric(horizontal: Sizes.md),
       child: ListTile(
         title: Text(
           title,
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall!
+              .apply(fontSizeFactor: 1),
         ),
         subtitle: Text(
           subtitle,
@@ -31,7 +35,7 @@ class CustomSettingListTile extends StatelessWidget {
         ),
         leading: Icon(
           icon,
-          color: CColors.primary,
+          color: dark ? CColors.white : CColors.primary,
           size: Sizes.iconLg,
         ),
         trailing: trailing,

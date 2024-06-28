@@ -86,7 +86,7 @@ class VerifyEmail extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium!
-                          .apply(color: CColors.primary),
+                          .apply(color: CColors.secondary),
                     ),
                   ],
                 ),

@@ -10,25 +10,30 @@ class CustomHeading extends StatelessWidget {
     required this.showButton,
     this.onPressed,
     this.buttonTitle,
+    this.padding = const EdgeInsets.symmetric(
+      vertical: Sizes.defaultSpace / 2,
+    ),
+    this.fontSizeFactor = 1.2,
   });
-
+  final EdgeInsetsGeometry padding;
   final Color color;
   final String? text, buttonTitle;
   final bool showButton;
   final void Function()? onPressed;
+  final double fontSizeFactor;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: Sizes.defaultSpace / 2),
+          padding: padding,
           child: Text(
             text!,
             style: Theme.of(context)
                 .textTheme
                 .headlineSmall!
-                .apply(color: color, fontSizeFactor: 1.2),
+                .apply(color: color, fontSizeFactor: fontSizeFactor),
           ),
         ),
         if (showButton)
@@ -36,7 +41,7 @@ class CustomHeading extends StatelessWidget {
               onPressed: onPressed,
               child: Text(
                 buttonTitle!,
-                style: TextStyle(color: Colors.blue),
+                style: const TextStyle(color: CColors.minimalText),
               )),
       ],
     );

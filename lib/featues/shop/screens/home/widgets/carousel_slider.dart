@@ -40,7 +40,7 @@ class CustomCarouselSlider extends StatelessWidget {
                 CircularDesignContainer(
                   margin: const EdgeInsets.all(Sizes.sm / 2),
                   backgroundColor: homeController.currentIndex.value == i
-                      ? CColors.primary
+                      ? CColors.minimalText
                       : CColors.grey,
                   width: 20,
                   height: 4,

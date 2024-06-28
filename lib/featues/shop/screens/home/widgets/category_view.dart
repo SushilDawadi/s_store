@@ -10,6 +10,7 @@ class CategoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: Sizes.spaceBtwItems),
       child: SizedBox(
@@ -28,13 +29,17 @@ class CategoryView extends StatelessWidget {
                       width: 60,
                       padding: const EdgeInsets.all(Sizes.sm),
                       decoration: BoxDecoration(
-                        color: CColors.white,
+                        color: dark
+                            ? CColors.grey.withOpacity(0.2)
+                            : CColors.white,
                         borderRadius: BorderRadius.circular(100),
                       ),
                       child: Center(
                         child: Image.asset(
                           Images.sport,
-                          color: CColors.dark.withOpacity(0.8),
+                          color: dark
+                              ? CColors.white
+                              : CColors.dark.withOpacity(0.8),
                           fit: BoxFit.cover,
                         ),
                       ),

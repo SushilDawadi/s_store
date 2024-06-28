@@ -10,7 +10,7 @@ import 'package:s_store/common/common.widgets/design/custom_child_header.dart';
 import 'package:s_store/common/common.widgets/grid_view_layout.dart';
 import 'package:s_store/common/common.widgets/heading.dart';
 import 'package:s_store/common/common.widgets/product/product_card_vertical.dart';
-import 'package:s_store/common/search_bar.dart';
+import 'package:s_store/common/common.widgets/search_bar.dart';
 import 'package:s_store/featues/shop/controllers/home_controller.dart';
 import 'package:s_store/featues/shop/screens/home/widgets/carousel_slider.dart';
 import 'package:s_store/featues/shop/screens/home/widgets/category_view.dart';
@@ -71,6 +71,7 @@ class HomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: Sizes.defaultSpace),
                         onTap: () {},
+                        showBorder: true,
                         text: "Search for products...",
                       ),
 

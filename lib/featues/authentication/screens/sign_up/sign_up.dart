@@ -125,7 +125,7 @@ class SignUp extends StatelessWidget {
                                             .textTheme
                                             .bodyMedium!
                                             .apply(
-                                                color: CColors.primary,
+                                                color: CColors.secondary,
                                                 decoration:
                                                     TextDecoration.underline)),
                                     TextSpan(
@@ -139,7 +139,7 @@ class SignUp extends StatelessWidget {
                                           .textTheme
                                           .bodyMedium!
                                           .apply(
-                                              color: CColors.primary,
+                                              color: CColors.secondary,
                                               decoration:
                                                   TextDecoration.underline),
                                     )

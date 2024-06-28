@@ -31,7 +31,7 @@ class CustomSearchBar extends StatelessWidget {
           decoration: BoxDecoration(
               color: showBackground
                   ? dark
-                      ? CColors.dark
+                      ? CColors.grey.withOpacity(0.2)
                       : CColors.white
                   : Colors.transparent,
               borderRadius: BorderRadius.circular(10),

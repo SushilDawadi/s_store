@@ -4,8 +4,9 @@ class CColors {
   CColors._();
 
   //app basic color
-  static const Color primary = Color(0XFFC85250);
-  static const Color secondary = Color(0xFF4f5d75);
+  static const Color primary = Color(0XFF222831);
+
+  static const Color secondary = Color(0XFFC85250);
   static const Color assent = Color(0XFFf2e9e4);
 
   //gradient color
@@ -22,6 +23,7 @@ class CColors {
   static const Color textWhite = Colors.white;
   static const Color textPrimary = Color(0XFF212529);
   static const Color textSecondary = Color(0XFF6c757d);
+  static const Color minimalText = Color(0XFF3d85c6);
 
   //background color
   static const Color light = Color(0XFFdee2e6);

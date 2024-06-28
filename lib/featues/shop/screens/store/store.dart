@@ -4,7 +4,7 @@ import 'package:s_store/common/common.widgets/appbar/tabbar.dart';
 import 'package:s_store/common/common.widgets/cart_counter.dart';
 import 'package:s_store/common/common.widgets/grid_view_layout.dart';
 import 'package:s_store/common/common.widgets/heading.dart';
-import 'package:s_store/common/search_bar.dart';
+import 'package:s_store/common/common.widgets/search_bar.dart';
 import 'package:s_store/featues/shop/screens/store/widgets/brand_card.dart';
 import 'package:s_store/featues/shop/screens/store/widgets/category_tab.dart';
 import 'package:s_store/utils/constants/colors.dart';
