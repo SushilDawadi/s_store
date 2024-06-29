@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/product/brand_title_text.dart';
+import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/enums.dart';
 
 import 'package:s_store/utils/constants/sizes.dart';
@@ -12,7 +13,7 @@ class BrandTitleAndVerifyIcon extends StatelessWidget {
     this.maxLines = 1,
     this.overflow = TextOverflow.ellipsis,
     this.textColor,
-    this.iconColor = Colors.indigo,
+    this.iconColor = CColors.minimalText,
     this.textSize = TextSize.small,
   });
 

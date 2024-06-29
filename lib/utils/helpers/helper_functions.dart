@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HelperFunctions {
+  HelperFunctions._();
   static Color? getColor(String value) {
     if (value == 'red') {
       return Colors.red;

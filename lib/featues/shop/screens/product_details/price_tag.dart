@@ -5,11 +5,13 @@ class CustomPriceTag extends StatelessWidget {
       {super.key,
       this.currency = '\$',
       required this.isLarge,
-      required this.price});
+      required this.price,
+      this.decoration = TextDecoration.none});
 
   final String currency;
   final bool isLarge;
   final String price;
+  final TextDecoration decoration;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -18,11 +20,11 @@ class CustomPriceTag extends StatelessWidget {
           ? Theme.of(context)
               .textTheme
               .headlineMedium!
-              .apply(color: Colors.white)
+              .apply(decoration: decoration)
           : Theme.of(context)
               .textTheme
               .headlineSmall!
-              .apply(color: Colors.white),
+              .apply(decoration: decoration),
     );
   }
 }

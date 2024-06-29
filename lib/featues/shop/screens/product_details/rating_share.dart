@@ -25,15 +25,11 @@ class RatingAndShare extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .titleSmall!
-                    .apply(color: Colors.white, fontWeightDelta: 2),
+                    .apply(fontWeightDelta: 2),
                 children: [
                   TextSpan(
-                    text: ' (200)',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .apply(color: CColors.white),
-                  )
+                      text: ' (200)',
+                      style: Theme.of(context).textTheme.bodyMedium)
                 ],
               ),
             )
