@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:s_store/common/common.widgets/design/circular_design_container.dart';
-import 'package:s_store/common/common.widgets/rounded_image.dart';
+import 'package:s_store/common/rounded_image.dart';
 import 'package:s_store/featues/shop/controllers/home_controller.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/sizes.dart';

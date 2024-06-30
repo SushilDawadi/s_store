@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:s_store/common/common.widgets/button.dart';
+import 'package:s_store/common/button.dart';
 import 'package:s_store/featues/authentication/screens/sign_up/sign_up.dart';
 import 'package:s_store/navigation_menu.dart';
 import 'package:s_store/utils/constants/sizes.dart';

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:s_store/common/common.widgets/circular_icon.dart';
+import 'package:s_store/common/circular_icon.dart';
 import 'package:s_store/common/common.widgets/design/shadows.dart';
 import 'package:s_store/common/common.widgets/product/brand_title_with_verify.dart';
 import 'package:s_store/common/common.widgets/product/product_title_text.dart';
 import 'package:s_store/featues/shop/screens/product_details/sale_tag.dart';
-import 'package:s_store/common/common.widgets/rounded_container.dart';
-import 'package:s_store/common/common.widgets/rounded_image.dart';
+import 'package:s_store/common/rounded_container.dart';
+import 'package:s_store/common/rounded_image.dart';
 import 'package:s_store/featues/shop/screens/product_details/product_details.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
@@ -41,6 +41,7 @@ class ProductCardVertical extends StatelessWidget {
               child: Stack(
                 children: [
                   const RoundedCustomImage(
+                    height: 150,
                     imageUrl: Images.product1,
                     applyImageRadius: true,
                   ),

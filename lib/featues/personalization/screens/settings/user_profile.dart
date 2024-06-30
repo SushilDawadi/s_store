@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
-import 'package:s_store/common/common.widgets/button.dart';
-import 'package:s_store/common/common.widgets/heading.dart';
+import 'package:s_store/common/button.dart';
+import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/common.widgets/images/circular_image.dart';
-import 'package:s_store/common/divider/divider.dart';
+import 'package:s_store/common/common.widgets/divider/divider.dart';
 import 'package:s_store/featues/personalization/screens/settings/widgets/profile_menu_tile.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
@@ -114,7 +114,7 @@ class UserProfile extends StatelessWidget {
                 title: "Date of Birth",
                 value: "10 Oct, 1994",
               ),
-              CustomDivider(),
+              const CustomDivider(),
               Padding(
                   padding: const EdgeInsets.all(Sizes.defaultSpace),
                   child: TextButton(

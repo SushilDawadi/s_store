@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
-import 'package:s_store/common/common.widgets/button.dart';
-import 'package:s_store/common/common.widgets/heading.dart';
+import 'package:s_store/common/button.dart';
+import 'package:s_store/common/common.widgets/bottom_bar/add_to_cart_bar.dart';
+import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/common.widgets/product/brand_title_with_verify.dart';
-import 'package:s_store/common/common.widgets/rounded_container.dart';
-import 'package:s_store/common/divider/divider.dart';
+import 'package:s_store/common/common.widgets/divider/divider.dart';
 import 'package:s_store/featues/shop/screens/product_details/choice_chip.dart';
 
 import 'package:s_store/featues/shop/screens/product_details/price_tag.dart';
@@ -12,6 +13,7 @@ import 'package:s_store/featues/shop/screens/product_details/sale_tag.dart';
 import 'package:s_store/featues/shop/screens/product_details/product_image_slider.dart';
 import 'package:s_store/featues/shop/screens/product_details/rating_share.dart';
 import 'package:s_store/featues/shop/screens/product_details/variation_continaer.dart';
+import 'package:s_store/featues/shop/screens/product_reviews/product_reviews.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/enums.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
@@ -268,7 +270,9 @@ class ProductDetails extends StatelessWidget {
                         showButton: false,
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => const ProductReviews());
+                          },
                           icon: const Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: Sizes.iconSm,
@@ -283,6 +287,7 @@ class ProductDetails extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: const AddToCartBar(),
     );
   }
 }

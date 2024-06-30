@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:s_store/common/common.widgets/button.dart';
-import 'package:s_store/common/common.widgets/divider.dart';
-import 'package:s_store/common/common.widgets/social_buttons.dart';
+import 'package:s_store/common/button.dart';
+import 'package:s_store/common/divider.dart';
+import 'package:s_store/common/social_buttons.dart';
 import 'package:s_store/featues/authentication/screens/verify_email/verify.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/image_strings.dart';

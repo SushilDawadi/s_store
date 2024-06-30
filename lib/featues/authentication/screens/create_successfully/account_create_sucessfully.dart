@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:s_store/common/common.widgets/button.dart';
+import 'package:s_store/common/button.dart';
 import 'package:s_store/featues/authentication/screens/forget_password/forget_password.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';

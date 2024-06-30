@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:s_store/common/common.widgets/rounded_container.dart';
+import 'package:s_store/common/rounded_container.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 
