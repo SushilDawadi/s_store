@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
 import 'package:s_store/common/button.dart';
@@ -8,6 +9,7 @@ import 'package:s_store/common/common.widgets/listtile/settings_list_tile.dart';
 import 'package:s_store/common/common.widgets/listtile/user_profile_tile.dart';
 import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/common.widgets/divider/divider.dart';
+import 'package:s_store/featues/personalization/screens/addresses/address.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/helpers/helper_functions.dart';
@@ -64,10 +66,13 @@ class Settings extends StatelessWidget {
                 const CustomDivider(
                   padding: EdgeInsets.only(bottom: Sizes.md),
                 ),
-                const CustomSettingListTile(
+                CustomSettingListTile(
                   icon: Iconsax.home,
                   subtitle: "Set shopping delivery address",
                   title: "My Address",
+                  onTap: () {
+                    Get.to(() => const UserAddress());
+                  },
                 ),
                 const CustomSettingListTile(
                   icon: Iconsax.shopping_cart,

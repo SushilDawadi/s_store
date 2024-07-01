@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/utils/constants/colors.dart';
-import 'package:s_store/utils/helpers/helper_functions.dart';
 
 class CustomCartCounter extends StatelessWidget {
-  const CustomCartCounter({super.key, this.iconColor = CColors.white});
+  const CustomCartCounter(
+      {super.key, this.iconColor = CColors.white, this.onTap});
 
   final Color iconColor;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Iconsax.shopping_bag,
-            color: HelperFunctions.isDarkMode(context)
-                ? CColors.white
-                : CColors.dark,
-          ),
+          onPressed: onTap,
+          icon: const Icon(Iconsax.shopping_bag, color: Colors.white),
         ),
         Positioned(
           right: 0,

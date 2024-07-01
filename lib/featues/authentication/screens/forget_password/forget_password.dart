@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/button.dart';
 import 'package:s_store/featues/authentication/screens/password_reset_sent/password_reset_sent.dart';

@@ -29,8 +29,7 @@ class CustomCircularImage extends StatelessWidget {
       height: height,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-        // color:
-        //     HelperFunctions.isDarkMode(context) ? CColors.dark : CColors.white,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(100),
       ),
       child: Image(

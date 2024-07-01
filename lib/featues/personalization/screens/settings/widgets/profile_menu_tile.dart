@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 
 class ProfileMenuTile extends StatelessWidget {

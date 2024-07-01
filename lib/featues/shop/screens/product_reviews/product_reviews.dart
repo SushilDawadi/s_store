@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:s_store/featues/shop/screens/product_reviews/widgets/rating_bar_indicator.dart';
 import 'package:s_store/featues/shop/screens/product_reviews/widgets/rating_star_text.dart';
 import 'package:s_store/featues/shop/screens/product_reviews/widgets/user_reviews.dart';
-import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/sizes.dart';
-import 'package:s_store/utils/device/device_utility.dart';
-import 'package:s_store/utils/helpers/helper_functions.dart';
 
 class ProductReviews extends StatelessWidget {
   const ProductReviews({super.key});
@@ -65,7 +61,9 @@ class ProductReviews extends StatelessWidget {
               ),
               const SizedBox(height: Sizes.defaultSpace),
               //user reviews
-              UserReviews()
+              const UserReviews(),
+              const SizedBox(height: Sizes.defaultSpace),
+              const UserReviews()
             ],
           ),
         ),

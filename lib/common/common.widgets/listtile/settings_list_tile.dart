@@ -15,7 +15,7 @@ class CustomSettingListTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final Widget? trailing;
-  final VoidCallbackAction? onTap;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     final dark = Theme.of(context).brightness == Brightness.dark;
@@ -39,7 +39,7 @@ class CustomSettingListTile extends StatelessWidget {
           size: Sizes.iconLg,
         ),
         trailing: trailing,
-        onTap: () {},
+        onTap: onTap,
       ),
     );
   }

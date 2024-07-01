@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
-import 'package:s_store/common/button.dart';
 import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/common.widgets/images/circular_image.dart';
 import 'package:s_store/common/common.widgets/divider/divider.dart';
