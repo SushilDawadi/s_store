@@ -27,10 +27,10 @@ class UserProfile extends StatelessWidget {
           width: double.infinity,
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: Sizes.defaultSpace,
               ),
-              CustomCircularImage(
+              const CustomCircularImage(
                 image: Images.profileImage,
                 fit: BoxFit.cover,
                 height: 90,

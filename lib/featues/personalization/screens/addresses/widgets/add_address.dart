@@ -22,7 +22,7 @@ class AddAddress extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   prefixIcon: Icon(Iconsax.user),
                   labelText: "Name",
                 ),
@@ -31,7 +31,7 @@ class AddAddress extends StatelessWidget {
                 height: Sizes.spaceBtwItems,
               ),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   prefixIcon: Icon(Iconsax.call),
                   labelText: "Phone Number",
                 ),

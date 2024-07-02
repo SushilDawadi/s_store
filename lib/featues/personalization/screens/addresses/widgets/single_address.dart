@@ -50,7 +50,7 @@ class SingleAddress extends StatelessWidget {
                 "9825157838",
                 style: Theme.of(context).textTheme.titleSmall,
               ),
-              Text(
+              const Text(
                 "98562 Kanya Marga ,Nadipur ,Pokhara ,33700 ,Nepal ",
                 softWrap: true,
               )

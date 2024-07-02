@@ -31,8 +31,8 @@ class Store extends StatelessWidget {
             actions: [
               CustomCartCounter(
                 iconColor: HelperFunctions.isDarkMode(context)
-                    ? CColors.dark
-                    : CColors.white,
+                    ? CColors.white
+                    : CColors.dark,
               )
             ],
           ),

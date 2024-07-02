@@ -60,6 +60,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         actions: [
                           CustomCartCounter(
+                            iconColor: Colors.white,
                             onTap: () => Get.to(() => const Cart()),
                           )
                         ],

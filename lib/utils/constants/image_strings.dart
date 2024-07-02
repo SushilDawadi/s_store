@@ -18,6 +18,7 @@ class Images {
   static const lottieDelivery = "assets/animations/on_boarding/delivery.json";
   static const verifyEmail = "assets/animations/on_boarding/email_verify.json";
   static const success = "assets/animations/on_boarding/success.json";
+  static const paymentSuccess = "assets/animations/on_boarding/payment.json";
 
   //category icons
   static const sport = "assets/icons/category/ball.png";
@@ -39,4 +40,7 @@ class Images {
 
   //profile image
   static const profileImage = "assets/images/users/user.png";
+
+  //payment
+  static const esewa = "assets/images/payment/esewa.png";
 }

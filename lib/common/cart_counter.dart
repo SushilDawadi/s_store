@@ -3,8 +3,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:s_store/utils/constants/colors.dart';
 
 class CustomCartCounter extends StatelessWidget {
-  const CustomCartCounter(
-      {super.key, this.iconColor = CColors.white, this.onTap});
+  const CustomCartCounter({super.key, required this.iconColor, this.onTap});
 
   final Color iconColor;
   final void Function()? onTap;
@@ -15,7 +14,7 @@ class CustomCartCounter extends StatelessWidget {
       children: [
         IconButton(
           onPressed: onTap,
-          icon: const Icon(Iconsax.shopping_bag, color: Colors.white),
+          icon: Icon(Iconsax.shopping_bag, color: iconColor),
         ),
         Positioned(
           right: 0,

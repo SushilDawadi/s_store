@@ -12,15 +12,15 @@ class CategoryTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         children: [
           Padding(
-            padding: EdgeInsets.all(Sizes.defaultSpace),
+            padding: const EdgeInsets.all(Sizes.defaultSpace),
             child: Column(
               children: [
                 //brand
-                BrandShowCase(images: [
+                const BrandShowCase(images: [
                   Images.product1,
                   Images.product2,
                   Images.product3
@@ -28,7 +28,7 @@ class CategoryTab extends StatelessWidget {
 
                 //products
                 //heading you might like
-                CustomHeading(
+                const CustomHeading(
                   text: "You Might like",
                   showButton: true,
                   buttonTitle: "View all",
@@ -37,7 +37,7 @@ class CategoryTab extends StatelessWidget {
                 GridViewLayout(
                     itemCount: 4,
                     itemBuilder: (_, index) {
-                      return ProductCardVertical();
+                      return const ProductCardVertical();
                     })
               ],
             ),
