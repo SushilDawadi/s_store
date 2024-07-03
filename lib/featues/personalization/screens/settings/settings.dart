@@ -10,6 +10,7 @@ import 'package:s_store/common/common.widgets/listtile/user_profile_tile.dart';
 import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/common.widgets/divider/divider.dart';
 import 'package:s_store/featues/personalization/screens/addresses/address.dart';
+import 'package:s_store/featues/shop/screens/orders/orders.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/helpers/helper_functions.dart';
@@ -79,10 +80,13 @@ class Settings extends StatelessWidget {
                   subtitle: "Add,remove products and move to checkout ",
                   title: "My Cart",
                 ),
-                const CustomSettingListTile(
+                CustomSettingListTile(
                   icon: Iconsax.wallet,
                   subtitle: "Set shopping delivery address",
                   title: "My Orders",
+                  onTap: () {
+                    Get.to(() => const Orders());
+                  },
                 ),
                 const CustomSettingListTile(
                   icon: Iconsax.bank,

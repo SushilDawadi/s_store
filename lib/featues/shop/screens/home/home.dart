@@ -12,6 +12,7 @@ import 'package:s_store/featues/shop/controllers/home_controller.dart';
 import 'package:s_store/featues/shop/screens/cart/cart.dart';
 import 'package:s_store/featues/shop/screens/home/widgets/carousel_slider.dart';
 import 'package:s_store/featues/shop/screens/home/widgets/category_view.dart';
+import 'package:s_store/featues/shop/screens/sub_categories/sub_category.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';
@@ -90,7 +91,11 @@ class HomeScreen extends StatelessWidget {
                       ),
 
                       //category view
-                      const CategoryView(),
+                      CategoryView(
+                        onTap: () {
+                          Get.to(() => const SubCategory());
+                        },
+                      ),
                       const SizedBox(height: Sizes.spaceBtwSections)
                     ],
                   ),

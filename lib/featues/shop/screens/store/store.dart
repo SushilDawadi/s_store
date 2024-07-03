@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
 import 'package:s_store/common/common.widgets/appbar/tabbar.dart';
 import 'package:s_store/common/cart_counter.dart';
 import 'package:s_store/common/grid_view_layout.dart';
 import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/search_bar.dart';
+import 'package:s_store/featues/shop/screens/cart/cart.dart';
 import 'package:s_store/featues/shop/screens/store/widgets/brand_card.dart';
 import 'package:s_store/featues/shop/screens/store/widgets/category_tab.dart';
 import 'package:s_store/utils/constants/colors.dart';
@@ -30,6 +32,9 @@ class Store extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineMedium),
             actions: [
               CustomCartCounter(
+                onTap: () {
+                  Get.to(() => Cart());
+                },
                 iconColor: HelperFunctions.isDarkMode(context)
                     ? CColors.white
                     : CColors.dark,
