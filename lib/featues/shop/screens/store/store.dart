@@ -6,6 +6,7 @@ import 'package:s_store/common/cart_counter.dart';
 import 'package:s_store/common/grid_view_layout.dart';
 import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/search_bar.dart';
+import 'package:s_store/featues/shop/screens/all_brands/all_brands.dart';
 import 'package:s_store/featues/shop/screens/cart/cart.dart';
 import 'package:s_store/featues/shop/screens/store/widgets/brand_card.dart';
 import 'package:s_store/featues/shop/screens/store/widgets/category_tab.dart';
@@ -72,7 +73,9 @@ class Store extends StatelessWidget {
                               : CColors.dark,
                           text: "Featured Brands",
                           showButton: true,
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => const AllBrands());
+                          },
                           buttonTitle: "View All",
                         ),
                         const SizedBox(height: Sizes.spaceBtwItems),

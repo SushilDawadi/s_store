@@ -21,14 +21,14 @@ class CustomBrandCard extends StatelessWidget {
   final bool showBorder;
   final String image;
   final EdgeInsetsGeometry padding;
-  final VoidCallbackAction? onPressed;
+  final void Function()? onPressed;
   final String brandTitle;
   final String productCount;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onPressed,
       child: CustomRoundedContainer(
         padding: padding,
         showborder: showBorder,

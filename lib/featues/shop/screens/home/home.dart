@@ -9,6 +9,7 @@ import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/common.widgets/product/product_card_vertical.dart';
 import 'package:s_store/common/search_bar.dart';
 import 'package:s_store/featues/shop/controllers/home_controller.dart';
+import 'package:s_store/featues/shop/screens/all_products/all_product.dart';
 import 'package:s_store/featues/shop/screens/cart/cart.dart';
 import 'package:s_store/featues/shop/screens/home/widgets/carousel_slider.dart';
 import 'package:s_store/featues/shop/screens/home/widgets/category_view.dart';
@@ -118,7 +119,9 @@ class HomeScreen extends StatelessWidget {
                         : CColors.dark,
                     text: "Popular Products",
                     showButton: true,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const AllProduct());
+                    },
                     buttonTitle: "View All",
                   ),
                   //product list
