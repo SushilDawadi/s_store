@@ -26,7 +26,7 @@ class SortableProducts extends StatelessWidget {
           items: ['Nike', 'Addidas', 'puma', 'Reebook']
               .map(
                 (option) => DropdownMenuItem(
-                  value: option,
+                  value: option, 
                   child: Text(option),
                 ),
               )
