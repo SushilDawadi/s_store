@@ -63,6 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '431973417834',
     projectId: 'fir-store-8fbf2',
     storageBucket: 'fir-store-8fbf2.appspot.com',
+    androidClientId: '431973417834-jimlrofc70tnj509ja01psrjn88fi1l9.apps.googleusercontent.com',
+    iosClientId: '431973417834-7991gibp88jagjsqol7unb1rc0fani6p.apps.googleusercontent.com',
     iosBundleId: 'com.example.sStore',
   );
 
@@ -72,6 +74,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '431973417834',
     projectId: 'fir-store-8fbf2',
     storageBucket: 'fir-store-8fbf2.appspot.com',
+    androidClientId: '431973417834-jimlrofc70tnj509ja01psrjn88fi1l9.apps.googleusercontent.com',
+    iosClientId: '431973417834-7991gibp88jagjsqol7unb1rc0fani6p.apps.googleusercontent.com',
     iosBundleId: 'com.example.sStore',
   );
 
@@ -83,4 +87,5 @@ class DefaultFirebaseOptions {
     authDomain: 'fir-store-8fbf2.firebaseapp.com',
     storageBucket: 'fir-store-8fbf2.appspot.com',
   );
+
 }
