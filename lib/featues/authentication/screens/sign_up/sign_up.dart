@@ -49,6 +49,7 @@ class SignUp extends StatelessWidget {
                               validator: (value) =>
                                   CustomValidators.emptyFieldValidator(
                                       value, "First Name"),
+                              controller: controller.firstname,
                               expands: false,
                               decoration: const InputDecoration(
                                 labelText: TextStrings.firstame,
@@ -64,6 +65,7 @@ class SignUp extends StatelessWidget {
                               validator: (value) =>
                                   CustomValidators.emptyFieldValidator(
                                       value, "Last Name"),
+                              controller: controller.lastname,
                               expands: false,
                               decoration: const InputDecoration(
                                 labelText: TextStrings.lastname,
@@ -80,6 +82,7 @@ class SignUp extends StatelessWidget {
                         validator: (value) =>
                             CustomValidators.emptyFieldValidator(
                                 value, "Username"),
+                        controller: controller.username,
                         decoration: const InputDecoration(
                           labelText: TextStrings.username,
                           prefixIcon: Icon(Iconsax.user_edit),
@@ -92,6 +95,7 @@ class SignUp extends StatelessWidget {
                         validator: (value) => CustomValidators.emailValidator(
                           value,
                         ),
+                        controller: controller.email,
                         decoration: const InputDecoration(
                           labelText: TextStrings.email,
                           prefixIcon: Icon(Iconsax.direct_right),
@@ -103,6 +107,7 @@ class SignUp extends StatelessWidget {
                       TextFormField(
                         validator: (value) =>
                             CustomValidators.phoneNumberValidator(value),
+                        controller: controller.phone,
                         decoration: const InputDecoration(
                           labelText: TextStrings.phoneNumber,
                           prefixIcon: Icon(Iconsax.call),
@@ -115,6 +120,7 @@ class SignUp extends StatelessWidget {
                         () => TextFormField(
                           validator: (value) =>
                               CustomValidators.passwordValidator(value),
+                          controller: controller.password,
                           decoration: InputDecoration(
                             labelText: TextStrings.password,
                             prefixIcon: const Icon(Iconsax.password_check),

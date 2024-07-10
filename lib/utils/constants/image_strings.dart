@@ -10,7 +10,7 @@ class Images {
   static const linkedinLogo = "";
   static const githubLogo = "";
   static const instagramLogo = "";
-
+// lootie files
   static const lottieWelcome =
       "assets/animations/on_boarding/email-marketing.json";
   static const lottieShopping =
@@ -19,6 +19,7 @@ class Images {
   static const verifyEmail = "assets/animations/on_boarding/email_verify.json";
   static const success = "assets/animations/on_boarding/success.json";
   static const paymentSuccess = "assets/animations/on_boarding/payment.json";
+  static const loading = "assets/animations/on_boarding/loading.json";
 
   //category icons
   static const sport = "assets/icons/category/ball.png";
