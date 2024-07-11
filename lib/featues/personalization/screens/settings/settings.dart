@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -9,6 +10,7 @@ import 'package:s_store/common/common.widgets/listtile/settings_list_tile.dart';
 import 'package:s_store/common/common.widgets/listtile/user_profile_tile.dart';
 import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/common.widgets/divider/divider.dart';
+import 'package:s_store/data/repositories/authentication/authentication_repositories.dart';
 import 'package:s_store/featues/personalization/screens/addresses/address.dart';
 import 'package:s_store/featues/shop/screens/orders/orders.dart';
 import 'package:s_store/utils/constants/colors.dart';
@@ -154,7 +156,11 @@ class Settings extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(Sizes.defaultSpace),
               child: CustomButton(
-                  text: "LogOut", onPressed: () {}, isFilled: false),
+                  text: "LogOut",
+                  onPressed: () {
+                    AuthenticationRepository.instance.signOut();
+                  },
+                  isFilled: false),
             )
           ],
         ),

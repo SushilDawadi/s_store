@@ -9,7 +9,12 @@ class CustomLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Lottie.asset(Images.loading);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Lottie.asset(Images.loading, width: 300, height: 300),
+      ],
+    );
   }
 
   static stoploading() {

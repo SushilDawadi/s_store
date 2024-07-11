@@ -7,9 +7,10 @@ import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/constants/text_Strings.dart';
 
-class AccountCreateSuccessfully extends StatelessWidget {
-  const AccountCreateSuccessfully({super.key});
+class SuccessScreen extends StatelessWidget {
+  const SuccessScreen({super.key, required this.onPressed});
 
+  final Future<void> Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +47,7 @@ class AccountCreateSuccessfully extends StatelessWidget {
                 height: Sizes.spaceBtwSections,
               ),
               CustomButton(
-                  text: "Continue",
-                  onPressed: () {
-                    Get.to(() => const ForgetPassword());
-                  },
-                  isFilled: true)
+                  text: "Continue", onPressed: onPressed, isFilled: true)
             ],
           ),
         ),

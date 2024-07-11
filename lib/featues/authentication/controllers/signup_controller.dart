@@ -26,9 +26,7 @@ class SignupController extends GetxController {
     try {
       //loader
       Get.dialog(
-        const Center(
-          child: CustomLoader(),
-        ),
+        const CustomLoader(),
         barrierDismissible: false,
       );
       //check connectivity
@@ -76,9 +74,11 @@ class SignupController extends GetxController {
 
       //show success message
       Loaders.successSnackBar(
-          title: 'Success', message: 'Account created successfully');
+          title: 'Account created', message: 'Account created successfully');
 
-      Get.to(() => const VerifyEmail());
+      Get.to(() => VerifyEmail(
+            email: email.text.trim(),
+          ));
     } catch (e) {
       CustomLoader.stoploading();
       Loaders.errorSnackBar(
