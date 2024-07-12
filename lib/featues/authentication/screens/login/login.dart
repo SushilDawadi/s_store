@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:s_store/common/divider.dart';
 import 'package:s_store/common/social_buttons.dart';
+import 'package:s_store/featues/authentication/controllers/login_controller.dart';
 import 'package:s_store/featues/authentication/screens/login/widgets/login_form.dart';
 import 'package:s_store/featues/authentication/screens/login/widgets/login_header.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
@@ -12,10 +14,11 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    final controller = Get.put(LoginController());
+    return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: Sizes.appBarHeight,
             left: Sizes.defaultSpace,
             right: Sizes.defaultSpace,
@@ -24,17 +27,17 @@ class Login extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              LoginHeader(),
+              const LoginHeader(),
               //form
-              LoginForm(),
+              const LoginForm(),
               //Remember me and forget password
 
-              SizedBox(
+              const SizedBox(
                 height: Sizes.spaceBtwSections,
               ),
               //Divider
-              FormDivider(dividerText: TextStrings.orSignInWith),
-              SizedBox(
+              const FormDivider(dividerText: TextStrings.orSignInWith),
+              const SizedBox(
                 height: Sizes.spaceBtwSections,
               ),
 
@@ -42,16 +45,27 @@ class Login extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SocialButtons(logoString: Images.googleLogo),
-                  SizedBox(
+                  SocialButtons(
+                    logoString: Images.googleLogo,
+                    onPressed: () {
+                      controller.googleSignIn();
+                    },
+                  ),
+                  const SizedBox(
                     width: Sizes.spaceBtwItems,
                   ),
-                  SocialButtons(logoString: Images.facebookLogo),
-                  SizedBox(
+                  SocialButtons(
+                    logoString: Images.facebookLogo,
+                    onPressed: () {},
+                  ),
+                  const SizedBox(
                     width: Sizes.spaceBtwItems,
                   ),
-                  SocialButtons(logoString: Images.appleLogo),
-                  SizedBox(
+                  SocialButtons(
+                    logoString: Images.appleLogo,
+                    onPressed: () {},
+                  ),
+                  const SizedBox(
                     width: Sizes.spaceBtwItems,
                   ),
                 ],

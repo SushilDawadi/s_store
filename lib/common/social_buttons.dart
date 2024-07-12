@@ -4,7 +4,12 @@ import 'package:s_store/utils/constants/sizes.dart';
 
 class SocialButtons extends StatelessWidget {
   final String logoString;
-  const SocialButtons({super.key, required this.logoString});
+  final void Function()? onPressed;
+  const SocialButtons({
+    super.key,
+    required this.logoString,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class SocialButtons extends StatelessWidget {
             ),
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: onPressed ?? () {},
             icon: Image(
               height: Sizes.iconMd,
               width: Sizes.iconMd,

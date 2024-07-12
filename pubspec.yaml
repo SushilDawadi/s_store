@@ -46,6 +46,7 @@ dependencies:
   firebase_core:
   firebase_auth:
   cloud_firestore:
+  google_sign_in:
 
   #Icons
   iconsax: ^0.0.8

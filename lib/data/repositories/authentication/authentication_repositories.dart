@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:s_store/featues/authentication/screens/login/login.dart';
 import 'package:s_store/featues/authentication/screens/onboarding/onboarding.dart';
 import 'package:s_store/featues/authentication/screens/verify_email/verify.dart';
@@ -97,8 +98,37 @@ class AuthenticationRepository extends GetxController {
   //Logout user
   Future<void> signOut() async {
     try {
+      await GoogleSignIn().signOut();
       await _auth.signOut();
       Get.offAll(() => const Login());
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw FirebaseExceptions(e.code).message;
+    } catch (e) {
+      throw 'An error occurred while processing the request.';
+    }
+  }
+
+  ///-------------------------[Google Authentication -Sign in with Google]
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      // Trigger the Google Sign In process
+      print("s1");
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      // Obtain the GoogleSignInAuthentication object
+      print("s2");
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      // Create a new credential
+      print("s3");
+      final credentials = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      print("s4");
+      // Once signed in, return the UserCredential
+      return await _auth.signInWithCredential(credentials);
     } on FirebaseAuthException catch (e) {
       throw FirebaseExceptions(e.code).message;
     } on FirebaseException catch (e) {
