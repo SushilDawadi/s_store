@@ -14,66 +14,68 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginController());
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: Sizes.appBarHeight,
-            left: Sizes.defaultSpace,
-            right: Sizes.defaultSpace,
-            bottom: Sizes.defaultSpace,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const LoginHeader(),
-              //form
-              const LoginForm(),
-              //Remember me and forget password
+    return GetBuilder<LoginController>(builder: (controller) {
+      print("Building Login widget with controller: ${controller}");
+      return Scaffold(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: Sizes.appBarHeight,
+              left: Sizes.defaultSpace,
+              right: Sizes.defaultSpace,
+              bottom: Sizes.defaultSpace,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const LoginHeader(),
+                //form
+                const LoginForm(),
+                //Remember me and forget password
 
-              const SizedBox(
-                height: Sizes.spaceBtwSections,
-              ),
-              //Divider
-              const FormDivider(dividerText: TextStrings.orSignInWith),
-              const SizedBox(
-                height: Sizes.spaceBtwSections,
-              ),
+                const SizedBox(
+                  height: Sizes.spaceBtwSections,
+                ),
+                //Divider
+                const FormDivider(dividerText: TextStrings.orSignInWith),
+                const SizedBox(
+                  height: Sizes.spaceBtwSections,
+                ),
 
-              //footer
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SocialButtons(
-                    logoString: Images.googleLogo,
-                    onPressed: () {
-                      controller.googleSignIn();
-                    },
-                  ),
-                  const SizedBox(
-                    width: Sizes.spaceBtwItems,
-                  ),
-                  SocialButtons(
-                    logoString: Images.facebookLogo,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(
-                    width: Sizes.spaceBtwItems,
-                  ),
-                  SocialButtons(
-                    logoString: Images.appleLogo,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(
-                    width: Sizes.spaceBtwItems,
-                  ),
-                ],
-              )
-            ],
+                //footer
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SocialButtons(
+                      logoString: Images.googleLogo,
+                      onPressed: () {
+                        controller.googleSignIn();
+                      },
+                    ),
+                    const SizedBox(
+                      width: Sizes.spaceBtwItems,
+                    ),
+                    SocialButtons(
+                      logoString: Images.facebookLogo,
+                      onPressed: () {},
+                    ),
+                    const SizedBox(
+                      width: Sizes.spaceBtwItems,
+                    ),
+                    SocialButtons(
+                      logoString: Images.appleLogo,
+                      onPressed: () {},
+                    ),
+                    const SizedBox(
+                      width: Sizes.spaceBtwItems,
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

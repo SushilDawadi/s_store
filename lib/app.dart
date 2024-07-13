@@ -5,6 +5,7 @@ import 'package:s_store/bindings/general_bindings.dart';
 import 'package:s_store/common/widgets/custom_loader.dart';
 import 'package:s_store/featues/authentication/screens/onboarding/onboarding.dart';
 import 'package:s_store/utils/constants/colors.dart';
+import 'package:s_store/utils/routes.dart';
 import 'package:s_store/utils/theme/theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         initialBinding: GeneralBindings(),
+        getPages: GetRoutes.pages,
         home: Scaffold(
           body: Container(
             decoration: const BoxDecoration(color: CColors.secondary),

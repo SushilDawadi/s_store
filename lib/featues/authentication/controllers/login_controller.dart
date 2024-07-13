@@ -13,6 +13,7 @@ import 'package:s_store/utils/theme/loaders.dart';
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
 
+  final userController = Get.put(UserController());
   final hidePassword = false.obs;
   final rememberMe = true.obs;
   final localStorage = GetStorage();
@@ -23,6 +24,7 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    print("LoginController initialized");
     //check if remember me is checked
     if (localStorage.read('REMEMBER_ME_EMAIL') != null) {
       email.text = localStorage.read('REMEMBER_ME_EMAIL');
@@ -83,19 +85,17 @@ class LoginController extends GetxController {
         const CustomLoader(),
         barrierDismissible: false,
       );
-      print("1");
+
       //check connectivity
       if (!await CNetworkManager.instance.isInternetConnected()) {
         CustomLoader.stoploading();
         return;
       }
-      print("2");
       final userCredential =
           await AuthenticationRepository.instance.signInWithGoogle();
-      print("3");
+
       //save user record
-      await UserController.instance.saveUserRecord(userCredential!);
-      print("4");
+      await userController.saveUserRecord(userCredential!);
       CustomLoader.stoploading();
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {

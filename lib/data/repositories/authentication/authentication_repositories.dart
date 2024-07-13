@@ -9,6 +9,7 @@ import 'package:s_store/featues/authentication/screens/onboarding/onboarding.dar
 import 'package:s_store/featues/authentication/screens/verify_email/verify.dart';
 import 'package:s_store/navigation_menu.dart';
 import 'package:s_store/utils/exception/firebase_exception.dart';
+import 'package:s_store/utils/routes.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance =>
@@ -46,8 +47,8 @@ class AuthenticationRepository extends GetxController {
       //local storage
       deviceStorage.writeIfNull('isFirstTime', true);
       deviceStorage.read('isFirstTime') != true
-          ? Get.offAll(() => const Login())
-          : Get.offAll(() => const onBoardingScreen());
+          ? Get.offAllNamed(GetRoutes.login)
+          : Get.offAllNamed(GetRoutes.onBoarding);
     }
   }
 
@@ -100,7 +101,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await GoogleSignIn().signOut();
       await _auth.signOut();
-      Get.offAll(() => const Login());
+      Get.offAllNamed(GetRoutes.login);
     } on FirebaseAuthException catch (e) {
       throw FirebaseExceptions(e.code).message;
     } on FirebaseException catch (e) {
@@ -114,21 +115,34 @@ class AuthenticationRepository extends GetxController {
   Future<UserCredential?> signInWithGoogle() async {
     try {
       // Trigger the Google Sign In process
-      print("s1");
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      // Obtain the GoogleSignInAuthentication object
-      print("s2");
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
-      // Create a new credential
-      print("s3");
+
+      if (googleUser == null) {
+        throw 'Google Sign-In aborted.';
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
       final credentials = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
-      print("s4");
-      // Once signed in, return the UserCredential
+
       return await _auth.signInWithCredential(credentials);
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw FirebaseExceptions(e.code).message;
+    } catch (e) {
+      throw 'An error occurred while processing the request.';
+    }
+  }
+
+  //Forget Password
+  Future<void> forgetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       throw FirebaseExceptions(e.code).message;
     } on FirebaseException catch (e) {

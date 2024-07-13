@@ -20,7 +20,10 @@ Future<void> main() async {
 
   //initialize firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
+      .then((FirebaseApp value) => Get.put(AuthenticationRepository()))
+      .catchError((error) {
+    print('Firebase initialization error:$error');
+  });
 
   runApp(const MyApp());
 }

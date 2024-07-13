@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:s_store/featues/authentication/screens/login/login.dart';
+import 'package:s_store/utils/routes.dart';
 
 class onBoardingController extends GetxController {
   static onBoardingController get instance => Get.find();
@@ -22,7 +23,7 @@ class onBoardingController extends GetxController {
     if (currentIndex.value == 2) {
       final storage = GetStorage();
       storage.write('isFirstTime', false);
-      Get.off(() => const Login());
+      Get.offNamed(GetRoutes.login);
     } else {
       int page = currentIndex.value + 1;
       pageController.animateToPage(page,
