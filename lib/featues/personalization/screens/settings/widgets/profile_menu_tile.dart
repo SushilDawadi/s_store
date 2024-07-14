@@ -24,8 +24,11 @@ class ProfileMenuTile extends StatelessWidget {
           children: [
             Expanded(
               flex: 2,
-              child:
-                  Text(title, style: Theme.of(context).textTheme.labelMedium),
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.labelMedium,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             Expanded(
               flex: 3,

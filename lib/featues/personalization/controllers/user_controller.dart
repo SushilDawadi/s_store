@@ -23,13 +23,13 @@ class UserController extends GetxController {
       profileLoading.value = true;
       final fetchUser = await _userRepository.fetchUserRecord();
       user = fetchUser;
+      update();
     } catch (e) {
       Loaders.errorSnackBar(
           title: "Data not found",
           message: "Something went wrong.please try again letter");
     } finally {
       profileLoading.value = false;
-      update();
     }
   }
 

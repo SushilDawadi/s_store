@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
 import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/common.widgets/images/circular_image.dart';
 import 'package:s_store/common/common.widgets/divider/divider.dart';
+import 'package:s_store/featues/personalization/controllers/user_controller.dart';
 import 'package:s_store/featues/personalization/screens/settings/widgets/profile_menu_tile.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';
+import 'package:s_store/utils/routes.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     final dark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: CustomAppBar(
@@ -62,14 +66,16 @@ class UserProfile extends StatelessWidget {
                 height: Sizes.sm,
               ),
               ProfileMenuTile(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(GetRoutes.changeName);
+                },
                 title: "Name",
-                value: "Sushil Dawadi",
+                value: controller.user.fullName,
               ),
               ProfileMenuTile(
                 onTap: () {},
                 title: "Username",
-                value: "Sushil_Dawadi01",
+                value: controller.user.username,
               ),
               const CustomDivider(
                 padding: EdgeInsets.only(top: Sizes.md),
@@ -90,18 +96,18 @@ class UserProfile extends StatelessWidget {
               ProfileMenuTile(
                 onTap: () {},
                 title: "UserID",
-                value: "4589",
+                value: controller.user.id,
                 icon: Iconsax.copy,
               ),
               ProfileMenuTile(
                 onTap: () {},
                 title: "Email",
-                value: "Sushil@gmail.com",
+                value: controller.user.email,
               ),
               ProfileMenuTile(
                 onTap: () {},
                 title: "Phone number",
-                value: "9825157838",
+                value: controller.user.phoneNumber,
               ),
               ProfileMenuTile(
                 onTap: () {},
