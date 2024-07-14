@@ -8,8 +8,8 @@ import 'package:s_store/featues/shop/screens/wishlist/wishlist.dart';
 import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/helpers/helper_functions.dart';
 
-class NavigationMenu extends StatelessWidget {
-  const NavigationMenu({super.key});
+class CNavigationMenu extends StatelessWidget {
+  const CNavigationMenu({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -28,13 +28,15 @@ class AuthenticationRepository extends GetxController {
     });
   }
 
+  // getter
+  User? get user => _auth.currentUser;
   //function to show relevant screen
   screenRedirect() async {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
         Future.delayed(Duration.zero, () {
-          Get.offAll(() => const NavigationMenu());
+          Get.offAllNamed(GetRoutes.navigationMenu);
         });
       } else {
         Future.delayed(Duration.zero, () {

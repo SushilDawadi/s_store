@@ -1,14 +1,39 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 import 'package:s_store/data/repositories/user/user_repository.dart';
-import 'package:s_store/featues/authentication/models/user_model.dart';
+import 'package:s_store/featues/personalization/models/user_model.dart';
 import 'package:s_store/utils/theme/loaders.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find<UserController>();
 
   final _userRepository = Get.put(UserRepository());
-//save user record
+  UserModel user = UserModel.empty();
+  RxBool profileLoading = false.obs;
+  @override
+  void onInit() {
+    fetchUserRecord();
+    super.onInit();
+  }
+
+  //fetch user record
+  Future<void> fetchUserRecord() async {
+    try {
+      profileLoading.value = true;
+      final fetchUser = await _userRepository.fetchUserRecord();
+      user = fetchUser;
+    } catch (e) {
+      Loaders.errorSnackBar(
+          title: "Data not found",
+          message: "Something went wrong.please try again letter");
+    } finally {
+      profileLoading.value = false;
+      update();
+    }
+  }
+
+  //save user record
   Future<void> saveUserRecord(UserCredential userCredential) async {
     try {
       if (userCredential != null) {

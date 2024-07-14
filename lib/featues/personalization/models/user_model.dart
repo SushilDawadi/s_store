@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class UserModel {
   final String id;
   String firstname;
@@ -32,6 +34,19 @@ class UserModel {
     return usernameWithPrefix;
   }
 
+  //empty user model
+  factory UserModel.empty() {
+    return UserModel(
+      id: '',
+      firstname: '',
+      lastname: '',
+      username: '',
+      email: '',
+      phoneNumber: '',
+      profilePicture: '',
+    );
+  }
+
   //convert model to JSON structure for storing data in firebase
   Map<String, dynamic> toJson() {
     return {
@@ -42,5 +57,24 @@ class UserModel {
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
     };
+  }
+
+  //from json
+  factory UserModel.fromSnapShot(
+      DocumentSnapshot<Map<String, dynamic>> snapshot) {
+    if (snapshot.data() != null) {
+      final data = snapshot.data()!;
+      return UserModel(
+        id: snapshot.id,
+        firstname: data['Firstname'] ?? '',
+        lastname: data['Lastname'] ?? '',
+        username: data['Username'] ?? '',
+        email: data['Email'] ?? '',
+        phoneNumber: data['PhoneNumber'] ?? '',
+        profilePicture: data['ProfilePicture' ?? ''],
+      );
+    } else {
+      return UserModel.empty();
+    }
   }
 }

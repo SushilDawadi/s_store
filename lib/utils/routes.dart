@@ -5,6 +5,7 @@ import 'package:s_store/featues/authentication/screens/login/login.dart';
 import 'package:s_store/featues/authentication/screens/onboarding/onboarding.dart';
 import 'package:s_store/featues/authentication/screens/password_reset_sent/password_reset_sent.dart';
 import 'package:s_store/featues/authentication/screens/sign_up/sign_up.dart';
+import 'package:s_store/navigation_menu.dart';
 
 class GetRoutes {
   static const String login = '/login';
@@ -12,6 +13,7 @@ class GetRoutes {
   static const String onBoarding = '/onBoarding';
   static const String forgetPassword = '/forgetPassword';
   static const String passwordReset = '/passwordReset';
+  static const String navigationMenu = '/navigationMenu';
 
   static final pages = [
     GetPage(
@@ -36,6 +38,11 @@ class GetRoutes {
     GetPage(
       name: passwordReset,
       page: () => const PasswordResetSent(),
-    )
+    ),
+    GetPage(
+      name: navigationMenu,
+      page: () => const CNavigationMenu(),
+      binding: NavigationMenu(),
+    ),
   ];
 }

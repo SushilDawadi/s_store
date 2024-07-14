@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:s_store/common/widgets/custom_loader.dart';
 import 'package:s_store/data/repositories/authentication/authentication_repositories.dart';
-import 'package:s_store/featues/authentication/controllers/user_controller.dart';
+import 'package:s_store/featues/personalization/controllers/user_controller.dart';
 import 'package:s_store/utils/device/network_manager.dart';
 import 'package:s_store/utils/theme/loaders.dart';
 

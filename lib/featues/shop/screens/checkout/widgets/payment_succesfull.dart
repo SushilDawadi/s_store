@@ -5,6 +5,7 @@ import 'package:s_store/common/button.dart';
 import 'package:s_store/navigation_menu.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';
+import 'package:s_store/utils/routes.dart';
 
 class PaymentSuccesfull extends StatelessWidget {
   const PaymentSuccesfull({super.key});
@@ -36,7 +37,7 @@ class PaymentSuccesfull extends StatelessWidget {
               CustomButton(
                   text: "Continue",
                   onPressed: () {
-                    Get.to(() => const NavigationMenu());
+                    Get.toNamed(GetRoutes.navigationMenu);
                   },
                   isFilled: true)
             ],

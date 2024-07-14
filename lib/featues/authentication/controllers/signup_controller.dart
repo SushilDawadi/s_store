@@ -1,11 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:s_store/common/widgets/custom_loader.dart';
 import 'package:s_store/data/repositories/authentication/authentication_repositories.dart';
 import 'package:s_store/data/repositories/user/user_repository.dart';
-import 'package:s_store/featues/authentication/models/user_model.dart';
+
 import 'package:s_store/featues/authentication/screens/verify_email/verify.dart';
+import 'package:s_store/featues/personalization/models/user_model.dart';
 import 'package:s_store/utils/device/network_manager.dart';
 import 'package:s_store/utils/theme/loaders.dart';
 
