@@ -5,6 +5,7 @@ import 'package:s_store/common/widgets/custom_loader.dart';
 import 'package:s_store/data/repositories/user/user_repository.dart';
 import 'package:s_store/featues/personalization/controllers/user_controller.dart';
 import 'package:s_store/featues/personalization/screens/settings/user_profile.dart';
+import 'package:s_store/utils/routes.dart';
 import 'package:s_store/utils/theme/loaders.dart';
 
 class UpdateUserNameController extends GetxController {
@@ -25,7 +26,7 @@ class UpdateUserNameController extends GetxController {
 
   updateName() async {
     //loader
-    const CustomLoader();
+    Get.dialog(const CustomLoader());
 
     //validate
     if (!changeNameFormKey.currentState!.validate()) {
@@ -42,13 +43,12 @@ class UpdateUserNameController extends GetxController {
 
     userController.user.firstname = firstName.text.trim();
     userController.user.lastname = lastName.text.trim();
+    userController.update();
 
     CustomLoader.stoploading();
     Loaders.successSnackBar(
         title: "Congratulations", message: "Your Name has been updated");
 
-    Get.off(
-      const UserProfile(),
-    );
+    Get.offNamedUntil(GetRoutes.userProfile, (route) => route.isFirst);
   }
 }

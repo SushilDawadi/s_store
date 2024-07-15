@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:s_store/data/repositories/authentication/authentication_repositories.dart';
 import 'package:s_store/featues/personalization/models/user_model.dart';
@@ -13,7 +15,7 @@ class UserRepository extends GetxController {
     try {
       await _db.collection("Users").doc(user.id).set(user.toJson());
     } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(e.code).message;
+      throw CFirebaseAuthException(e.code).message;
     } catch (e) {
       throw 'Something went wrong.please try again letter';
     }
@@ -43,7 +45,7 @@ class UserRepository extends GetxController {
           .doc(updatedUser.id)
           .update(updatedUser.toJson());
     } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(e.code).message;
+      throw CFirebaseAuthException(e.code).message;
     } catch (e) {
       throw 'Something went wrong.please try again letter';
     }
@@ -56,18 +58,18 @@ class UserRepository extends GetxController {
           .doc(AuthenticationRepository.instance.user!.uid)
           .update(json);
     } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(e.code).message;
+      throw CFirebaseAuthException(e.code).message;
     } catch (e) {
       throw 'Something went wrong.please try again letter';
     }
   }
 
   //to remove user record
-  Future<void> deleteUser(String userId) async {
+  Future<void> removeUserRecord(String userId) async {
     try {
       await _db.collection("Users").doc(userId).delete();
     } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(e.code).message;
+      throw CFirebaseAuthException(e.code).message;
     } catch (e) {
       throw 'Something went wrong.please try again letter';
     }

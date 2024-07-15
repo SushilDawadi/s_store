@@ -1,13 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:s_store/featues/authentication/screens/login/login.dart';
-import 'package:s_store/featues/authentication/screens/onboarding/onboarding.dart';
+import 'package:s_store/data/repositories/user/user_repository.dart';
 import 'package:s_store/featues/authentication/screens/verify_email/verify.dart';
-import 'package:s_store/navigation_menu.dart';
+
 import 'package:s_store/utils/exception/firebase_exception.dart';
 import 'package:s_store/utils/routes.dart';
 
@@ -17,6 +17,7 @@ class AuthenticationRepository extends GetxController {
 
   //variables
   final _auth = FirebaseAuth.instance;
+  final _db = FirebaseFirestore.instance;
   final deviceStorage = GetStorage();
 
   @override
@@ -61,9 +62,9 @@ class AuthenticationRepository extends GetxController {
       return await _auth.signInWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } on FirebaseException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } catch (e) {
       throw 'An error occurred while processing the request.';
     }
@@ -77,9 +78,9 @@ class AuthenticationRepository extends GetxController {
       return await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } on FirebaseException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } catch (e) {
       throw 'An error occurred while processing the request.';
     }
@@ -90,9 +91,9 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.currentUser!.sendEmailVerification();
     } on FirebaseAuthException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } on FirebaseException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } catch (e) {
       throw 'An error occurred while processing the request.';
     }
@@ -105,9 +106,9 @@ class AuthenticationRepository extends GetxController {
       await _auth.signOut();
       Get.offAllNamed(GetRoutes.login);
     } on FirebaseAuthException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } on FirebaseException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } catch (e) {
       throw 'An error occurred while processing the request.';
     }
@@ -133,9 +134,9 @@ class AuthenticationRepository extends GetxController {
 
       return await _auth.signInWithCredential(credentials);
     } on FirebaseAuthException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } on FirebaseException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } catch (e) {
       throw 'An error occurred while processing the request.';
     }
@@ -146,9 +147,39 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
     } on FirebaseException catch (e) {
-      throw FirebaseExceptions(e.code).message;
+      throw CFirebaseExceptions(e.code).message;
+    } catch (e) {
+      throw 'An error occurred while processing the request.';
+    }
+  }
+
+  //Delete User
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser!.delete();
+      Get.offAllNamed(GetRoutes.login);
+    } on FirebaseAuthException catch (e) {
+      throw CFirebaseExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw CFirebaseExceptions(e.code).message;
+    } catch (e) {
+      throw 'An error occurred while processing the request.';
+    }
+  }
+
+  //reauthenticate user
+  Future<void> reauthenticateUser(String email, String password) async {
+    try {
+      final credential =
+          EmailAuthProvider.credential(email: email, password: password);
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw CFirebaseExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw CFirebaseExceptions(e.code).message;
     } catch (e) {
       throw 'An error occurred while processing the request.';
     }

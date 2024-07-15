@@ -5,7 +5,9 @@ import 'package:s_store/featues/authentication/screens/login/login.dart';
 import 'package:s_store/featues/authentication/screens/onboarding/onboarding.dart';
 import 'package:s_store/featues/authentication/screens/password_reset_sent/password_reset_sent.dart';
 import 'package:s_store/featues/authentication/screens/sign_up/sign_up.dart';
+import 'package:s_store/featues/personalization/screens/settings/user_profile.dart';
 import 'package:s_store/featues/personalization/screens/settings/widgets/change_name.dart';
+import 'package:s_store/featues/personalization/screens/settings/widgets/re_authenticate_user.dart';
 import 'package:s_store/navigation_menu.dart';
 
 class GetRoutes {
@@ -16,6 +18,8 @@ class GetRoutes {
   static const String passwordReset = '/passwordReset';
   static const String navigationMenu = '/navigationMenu';
   static const String changeName = '/changeName';
+  static const String userProfile = '/userProfile';
+  static const String reauthenticate = '/reauthenticateForm';
 
   static final pages = [
     GetPage(
@@ -50,6 +54,11 @@ class GetRoutes {
       name: changeName,
       page: () => const ChangeName(),
       binding: UpdateUserNameControllerBindings(),
-    )
+    ),
+    GetPage(
+      name: userProfile,
+      page: () => const UserProfile(),
+    ),
+    GetPage(name: reauthenticate, page: () => const ReAuthenticateUser())
   ];
 }

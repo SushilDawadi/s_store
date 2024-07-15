@@ -1,7 +1,7 @@
-class FirebaseExceptions implements Exception {
+class CFirebaseExceptions implements Exception {
   final String code;
 
-  FirebaseExceptions(this.code);
+  CFirebaseExceptions(this.code);
 
   String get message {
     switch (code) {

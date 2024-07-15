@@ -1,8 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
+import 'package:s_store/common/widgets/custom_loader.dart';
+import 'package:s_store/data/repositories/authentication/authentication_repositories.dart';
 import 'package:s_store/data/repositories/user/user_repository.dart';
 import 'package:s_store/featues/personalization/models/user_model.dart';
+import 'package:s_store/utils/constants/sizes.dart';
+import 'package:s_store/utils/device/network_manager.dart';
+import 'package:s_store/utils/routes.dart';
 import 'package:s_store/utils/theme/loaders.dart';
 
 class UserController extends GetxController {
@@ -11,6 +17,10 @@ class UserController extends GetxController {
   final _userRepository = Get.put(UserRepository());
   UserModel user = UserModel.empty();
   RxBool profileLoading = false.obs;
+  final verifyEmail = TextEditingController();
+  final verifyPassword = TextEditingController();
+  final reAuthKey = GlobalKey<FormState>();
+
   @override
   void onInit() {
     fetchUserRecord();
@@ -21,14 +31,20 @@ class UserController extends GetxController {
   Future<void> fetchUserRecord() async {
     try {
       profileLoading.value = true;
-      final fetchUser = await _userRepository.fetchUserRecord();
-      user = fetchUser;
-      update();
+      final currentUser = AuthenticationRepository.instance.user;
+
+      if (currentUser != null) {
+        final fetchUser = await _userRepository.fetchUserRecord();
+        user = fetchUser;
+      } else {
+        print("User is not authenticated.Skipping fetch.");
+      }
     } catch (e) {
       Loaders.errorSnackBar(
-          title: "Data not found",
+          title: "Data not fetched",
           message: "Something went wrong.please try again letter");
     } finally {
+      update();
       profileLoading.value = false;
     }
   }
@@ -59,6 +75,89 @@ class UserController extends GetxController {
       Loaders.errorSnackBar(
           title: "Data not saved",
           message: "Something went wrong.please try again letter");
+    }
+  }
+
+  void deleteWarningPopUp() {
+    Get.defaultDialog(
+      contentPadding: const EdgeInsets.all(Sizes.md),
+      title: "Warning",
+      middleText: "Are you sure you want to delete your account?",
+      actions: [
+        TextButton(
+          onPressed: () {
+            Get.back();
+          },
+          child: const Text("Cancel"),
+        ),
+        TextButton(
+          onPressed: () {
+            deleteUserAccount();
+          },
+          child: const Text("Delete"),
+        ),
+      ],
+    );
+  }
+
+  void deleteUserAccount() async {
+    try {
+      Get.dialog(const CustomLoader());
+      //first reauthenticate user
+
+      final auth = AuthenticationRepository.instance;
+      final provider = auth.user!.providerData.map((e) => e.providerId).first;
+
+      if (provider.isNotEmpty) {
+        if (provider == "google.com") {
+          await auth.signInWithGoogle();
+          await auth.deleteAccount();
+          CustomLoader.stoploading();
+          Get.offAllNamed(GetRoutes.login);
+          Loaders.successSnackBar(
+              title: "Account Deleted",
+              message: "Account deleted successfully");
+        } else if (provider == "password") {
+          CustomLoader.stoploading();
+          Get.toNamed(GetRoutes.reauthenticate);
+        }
+      }
+    } catch (e) {
+      Loaders.errorSnackBar(title: "Data not deleted", message: e.toString());
+    }
+  }
+
+  ///REAUTHENTICATE USER BEFORE DELETING ACCOUNT
+  Future<void> reAuthenticateEmailAndPasswordUser() async {
+    try {
+      //loader
+      Get.dialog(const CustomLoader());
+
+      //connectivity
+      final isConnected = await CNetworkManager.instance.isInternetConnected();
+      if (!isConnected) {
+        CustomLoader.stoploading();
+        return;
+      }
+
+      //validate
+      if (!reAuthKey.currentState!.validate()) {
+        CustomLoader.stoploading();
+        return;
+      }
+
+      await AuthenticationRepository.instance.reauthenticateUser(
+          verifyEmail.text.trim(), verifyPassword.text.trim());
+      await AuthenticationRepository.instance.deleteAccount();
+      CustomLoader.stoploading();
+      Get.offAllNamed(GetRoutes.login);
+      Loaders.successSnackBar(
+          title: "Account Deleted", message: "Account deleted successfully");
+    } catch (e) {
+      CustomLoader.stoploading();
+      Loaders.errorSnackBar(
+          title: "Error",
+          message: "An error occurred while processing the request.");
     }
   }
 }

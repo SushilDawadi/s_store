@@ -5,6 +5,7 @@ import 'package:s_store/common/common.widgets/appbar/appbar.dart';
 import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/common.widgets/images/circular_image.dart';
 import 'package:s_store/common/common.widgets/divider/divider.dart';
+import 'package:s_store/data/repositories/user/user_repository.dart';
 import 'package:s_store/featues/personalization/controllers/user_controller.dart';
 import 'package:s_store/featues/personalization/screens/settings/widgets/profile_menu_tile.dart';
 import 'package:s_store/utils/constants/colors.dart';
@@ -19,6 +20,7 @@ class UserProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     final dark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: CustomAppBar(
         title: Text(
@@ -73,10 +75,9 @@ class UserProfile extends StatelessWidget {
                 value: controller.user.fullName,
               ),
               ProfileMenuTile(
-                onTap: () {},
-                title: "Username",
-                value: controller.user.username,
-              ),
+                  onTap: () {},
+                  title: "Username",
+                  value: controller.user.username),
               const CustomDivider(
                 padding: EdgeInsets.only(top: Sizes.md),
               ),
@@ -123,11 +124,13 @@ class UserProfile extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.all(Sizes.defaultSpace),
                   child: TextButton(
-                    child: Text("Deactivate Account",
+                    child: Text("Delete Account",
                         style: Theme.of(context).textTheme.bodyLarge!.apply(
                               color: Colors.red,
                             )),
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.deleteWarningPopUp();
+                    },
                   ))
             ],
           ),

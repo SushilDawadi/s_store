@@ -1,7 +1,7 @@
-class FirebaseAuthException implements Exception {
+class CFirebaseAuthException implements Exception {
   final String code;
 
-  FirebaseAuthException(this.code);
+  CFirebaseAuthException(this.code);
 
   String get message {
     switch (code) {
