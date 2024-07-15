@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:s_store/common/common.widgets/appbar/appbar.dart';
@@ -60,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                                       width: 80,
                                     )
                                   : Text(
-                                      user != null ? user.fullName : "",
+                                      user != null ? user.value.fullName : "",
                                       style: Theme.of(context)
                                           .textTheme
                                           .headlineSmall!

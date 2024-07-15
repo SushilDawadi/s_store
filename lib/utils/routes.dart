@@ -59,6 +59,9 @@ class GetRoutes {
       name: userProfile,
       page: () => const UserProfile(),
     ),
-    GetPage(name: reauthenticate, page: () => const ReAuthenticateUser())
+    GetPage(
+      name: reauthenticate,
+      page: () => const ReAuthenticateUser(),
+    )
   ];
 }

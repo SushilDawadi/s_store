@@ -22,14 +22,14 @@ class UserProfileTile extends StatelessWidget {
           padding: 0,
         ),
         title: Text(
-          controller.user.fullName,
+          controller.user.value.fullName,
           style: Theme.of(context)
               .textTheme
               .headlineSmall!
               .apply(color: CColors.white),
         ),
         subtitle: Text(
-          controller.user.email,
+          controller.user.value.email,
           style: Theme.of(context)
               .textTheme
               .bodyMedium!

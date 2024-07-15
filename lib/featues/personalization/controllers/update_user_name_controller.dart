@@ -20,8 +20,8 @@ class UpdateUserNameController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    firstName.text = userController.user.firstname;
-    lastName.text = userController.user.lastname;
+    firstName.text = userController.user.value.firstname;
+    lastName.text = userController.user.value.lastname;
   }
 
   updateName() async {
@@ -41,8 +41,8 @@ class UpdateUserNameController extends GetxController {
 
     await userRepo.updateSingleField(name);
 
-    userController.user.firstname = firstName.text.trim();
-    userController.user.lastname = lastName.text.trim();
+    userController.user.value.firstname = firstName.text.trim();
+    userController.user.value.lastname = lastName.text.trim();
     userController.update();
 
     CustomLoader.stoploading();

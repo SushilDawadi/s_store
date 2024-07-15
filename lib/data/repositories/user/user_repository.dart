@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:s_store/data/repositories/authentication/authentication_repositories.dart';
 import 'package:s_store/featues/personalization/models/user_model.dart';
 import 'package:s_store/utils/exception/firebase_auth_exception.dart';
+import 'package:s_store/utils/exception/firebase_exception.dart';
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find<UserRepository>();
@@ -68,6 +73,20 @@ class UserRepository extends GetxController {
   Future<void> removeUserRecord(String userId) async {
     try {
       await _db.collection("Users").doc(userId).delete();
+    } on FirebaseAuthException catch (e) {
+      throw CFirebaseAuthException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong.please try again letter';
+    }
+  }
+
+  //upload image
+  Future<String> uploadImage(String path, XFile image) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
+      return url;
     } on FirebaseAuthException catch (e) {
       throw CFirebaseAuthException(e.code).message;
     } catch (e) {

@@ -12,6 +12,7 @@ import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/routes.dart';
+import 'package:s_store/utils/theme/shimmer_effect.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
@@ -36,14 +37,29 @@ class UserProfile extends StatelessWidget {
               const SizedBox(
                 height: Sizes.defaultSpace,
               ),
-              const CustomCircularImage(
-                image: Images.profileImage,
-                fit: BoxFit.cover,
-                height: 90,
-                width: 90,
-              ),
+              Obx(() {
+                final networkImage = controller.user.value.profilePicture;
+                final image = networkImage.isNotEmpty
+                    ? networkImage
+                    : Images.profileImage;
+                return controller.imageLoading.value
+                    ? const CShimmerEffect(
+                        height: 55,
+                        width: 55,
+                        radius: 55,
+                      )
+                    : CustomCircularImage(
+                        image: image,
+                        fit: BoxFit.cover,
+                        height: 90,
+                        width: 90,
+                        isNetworkImage: networkImage.isNotEmpty,
+                      );
+              }),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  controller.uploadProfilePicture();
+                },
                 child: Text(
                   "Change Profile Picture",
                   style: Theme.of(context).textTheme.bodyMedium!.apply(
@@ -72,12 +88,12 @@ class UserProfile extends StatelessWidget {
                   Get.toNamed(GetRoutes.changeName);
                 },
                 title: "Name",
-                value: controller.user.fullName,
+                value: controller.user.value.fullName,
               ),
               ProfileMenuTile(
                   onTap: () {},
                   title: "Username",
-                  value: controller.user.username),
+                  value: controller.user.value.username),
               const CustomDivider(
                 padding: EdgeInsets.only(top: Sizes.md),
               ),
@@ -97,18 +113,18 @@ class UserProfile extends StatelessWidget {
               ProfileMenuTile(
                 onTap: () {},
                 title: "UserID",
-                value: controller.user.id,
+                value: controller.user.value.id,
                 icon: Iconsax.copy,
               ),
               ProfileMenuTile(
                 onTap: () {},
                 title: "Email",
-                value: controller.user.email,
+                value: controller.user.value.email,
               ),
               ProfileMenuTile(
                 onTap: () {},
                 title: "Phone number",
-                value: controller.user.phoneNumber,
+                value: controller.user.value.phoneNumber,
               ),
               ProfileMenuTile(
                 onTap: () {},

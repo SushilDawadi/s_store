@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:s_store/common/widgets/custom_loader.dart';
 import 'package:s_store/data/repositories/authentication/authentication_repositories.dart';
 import 'package:s_store/data/repositories/user/user_repository.dart';
@@ -15,8 +16,9 @@ class UserController extends GetxController {
   static UserController get instance => Get.find<UserController>();
 
   final _userRepository = Get.put(UserRepository());
-  UserModel user = UserModel.empty();
+  Rx<UserModel> user = UserModel.empty().obs;
   RxBool profileLoading = false.obs;
+  RxBool imageLoading = false.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final reAuthKey = GlobalKey<FormState>();
@@ -35,16 +37,16 @@ class UserController extends GetxController {
 
       if (currentUser != null) {
         final fetchUser = await _userRepository.fetchUserRecord();
-        user = fetchUser;
+        user(fetchUser);
       } else {
         print("User is not authenticated.Skipping fetch.");
       }
     } catch (e) {
+      user(UserModel.empty());
       Loaders.errorSnackBar(
           title: "Data not fetched",
           message: "Something went wrong.please try again letter");
     } finally {
-      update();
       profileLoading.value = false;
     }
   }
@@ -155,6 +157,36 @@ class UserController extends GetxController {
           title: "Account Deleted", message: "Account deleted successfully");
     } catch (e) {
       CustomLoader.stoploading();
+      Loaders.errorSnackBar(
+          title: "Error",
+          message: "An error occurred while processing the request.");
+    }
+  }
+
+  //upload user profile picture
+  uploadProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 70,
+        maxHeight: 512,
+        maxWidth: 512,
+      );
+      if (image != null) {
+        imageLoading.value = true;
+        final imageUrl =
+            await _userRepository.uploadImage('Users/Images/Profile', image);
+
+        //update user profile picture
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+
+        await _userRepository.updateSingleField(json);
+        user.value.profilePicture = imageUrl;
+        imageLoading.value = false;
+        Loaders.successSnackBar(
+            title: "Success", message: "You Profile Image has been updated!");
+      }
+    } catch (e) {
       Loaders.errorSnackBar(
           title: "Error",
           message: "An error occurred while processing the request.");
