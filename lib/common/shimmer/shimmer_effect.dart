@@ -18,8 +18,8 @@ class CShimmerEffect extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = Theme.of(context).brightness == Brightness.dark;
     return Shimmer.fromColors(
-      baseColor: dark ? Colors.grey[850]! : Colors.grey[300]!,
-      highlightColor: dark ? Colors.grey[700]! : Colors.grey[100]!,
+      baseColor: dark ? Colors.grey[850]! : Colors.grey[350]!,
+      highlightColor: dark ? Colors.grey[700]! : Colors.grey[50]!,
       child: Container(
         height: height,
         width: width,

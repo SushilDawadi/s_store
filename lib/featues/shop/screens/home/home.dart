@@ -22,7 +22,7 @@ import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/constants/text_Strings.dart';
 import 'package:s_store/utils/helpers/helper_functions.dart';
-import 'package:s_store/utils/theme/shimmer_effect.dart';
+import 'package:s_store/common/shimmer/shimmer_effect.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -12,7 +12,7 @@ import 'package:s_store/utils/constants/colors.dart';
 import 'package:s_store/utils/constants/image_strings.dart';
 import 'package:s_store/utils/constants/sizes.dart';
 import 'package:s_store/utils/routes.dart';
-import 'package:s_store/utils/theme/shimmer_effect.dart';
+import 'package:s_store/common/shimmer/shimmer_effect.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
