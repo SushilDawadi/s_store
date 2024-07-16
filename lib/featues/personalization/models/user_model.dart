@@ -10,7 +10,7 @@ class UserModel {
   String profilePicture;
 
   UserModel({
-    required this.id,
+    this.id = '',
     required this.firstname,
     required this.lastname,
     required this.username,

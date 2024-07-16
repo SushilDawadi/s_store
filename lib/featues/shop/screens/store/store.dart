@@ -6,6 +6,7 @@ import 'package:s_store/common/cart_counter.dart';
 import 'package:s_store/common/grid_view_layout.dart';
 import 'package:s_store/common/heading.dart';
 import 'package:s_store/common/search_bar.dart';
+import 'package:s_store/featues/shop/controllers/category_controller.dart';
 import 'package:s_store/featues/shop/screens/all_brands/all_brands.dart';
 import 'package:s_store/featues/shop/screens/cart/cart.dart';
 import 'package:s_store/featues/shop/screens/store/widgets/brand_card.dart';
@@ -20,9 +21,10 @@ class Store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
       animationDuration: Durations.extralong4,
-      length: 5,
+      length: categories.length,
       child: Scaffold(
           backgroundColor: HelperFunctions.isDarkMode(context)
               ? CColors.dark
@@ -46,78 +48,68 @@ class Store extends StatelessWidget {
             headerSliverBuilder: (_, innerBoxIsScrolled) {
               return [
                 SliverAppBar(
-                    automaticallyImplyLeading: false,
-                    pinned: true,
-                    floating: true,
-                    expandedHeight: 420,
-                    backgroundColor: HelperFunctions.isDarkMode(context)
-                        ? CColors.dark
-                        : CColors.white,
-                    flexibleSpace: ListView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(Sizes.defaultSpace),
-                      children: [
-                        // SizedBox(height: Sizes.spaceBtwSections),
-                        CustomSearchBar(
-                          text: "Search in Store",
-                          onTap: () {},
-                          showBackground: false,
-                          showBorder: true,
-                        ),
-                        const SizedBox(height: Sizes.spaceBtwItems),
-                        //feature heading
-                        CustomHeading(
-                          color: HelperFunctions.isDarkMode(context)
-                              ? CColors.white
-                              : CColors.dark,
-                          text: "Featured Brands",
-                          showButton: true,
-                          onPressed: () {
-                            Get.to(() => const AllBrands());
-                          },
-                          buttonTitle: "View All",
-                        ),
-                        const SizedBox(height: Sizes.spaceBtwItems),
+                  automaticallyImplyLeading: false,
+                  pinned: true,
+                  floating: true,
+                  expandedHeight: 420,
+                  backgroundColor: HelperFunctions.isDarkMode(context)
+                      ? CColors.dark
+                      : CColors.white,
+                  flexibleSpace: ListView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(Sizes.defaultSpace),
+                    children: [
+                      // SizedBox(height: Sizes.spaceBtwSections),
+                      CustomSearchBar(
+                        text: "Search in Store",
+                        onTap: () {},
+                        showBackground: false,
+                        showBorder: true,
+                      ),
+                      const SizedBox(height: Sizes.spaceBtwItems),
+                      //feature heading
+                      CustomHeading(
+                        color: HelperFunctions.isDarkMode(context)
+                            ? CColors.white
+                            : CColors.dark,
+                        text: "Featured Brands",
+                        showButton: true,
+                        onPressed: () {
+                          Get.to(() => const AllBrands());
+                        },
+                        buttonTitle: "View All",
+                      ),
+                      const SizedBox(height: Sizes.spaceBtwItems),
 
-                        GridViewLayout(
-                          itemCount: 4,
-                          mainAxisExtent: 80,
-                          itemBuilder: (_, index) {
-                            return const CustomBrandCard(
-                              showBorder: true,
-                              image: Images.sport,
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                    bottom: const CustomTabbar(tabs: [
-                      Tab(
-                        child: Text('Sports'),
+                      GridViewLayout(
+                        itemCount: 4,
+                        mainAxisExtent: 80,
+                        itemBuilder: (_, index) {
+                          return const CustomBrandCard(
+                            showBorder: true,
+                            image: Images.sport,
+                          );
+                        },
                       ),
-                      Tab(
-                        child: Text('Furniture'),
-                      ),
-                      Tab(
-                        child: Text('Electronics'),
-                      ),
-                      Tab(
-                        child: Text('Clothes'),
-                      ),
-                      Tab(
-                        child: Text('Cosmetics'),
-                      ),
-                    ])),
+                    ],
+                  ),
+                  bottom: CustomTabbar(
+                    tabs: categories
+                        .map((category) => Tab(
+                              text: category.name,
+                            ))
+                        .toList(),
+                  ),
+                ),
               ];
             },
-            body: const TabBarView(children: [
+            body: TabBarView(children: [
               //--brands
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
+              for (final category in categories)
+                CategoryTab(
+                  category: category,
+                ),
               //--products
             ]),
           )),

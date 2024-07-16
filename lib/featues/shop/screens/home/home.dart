@@ -119,9 +119,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     //custom carousel
-                    const CustomCarouselSlider(
-                      banners: [Images.banner1, Images.banner2, Images.banner3],
-                    ),
+                    const CustomCarouselSlider(),
                     //heading text
                     CustomHeading(
                       color: HelperFunctions.isDarkMode(context)

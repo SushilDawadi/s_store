@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class CategoryModel {
   final String id;
   final String name;
-  final String image;
+  String image;
   final bool isFeatured;
   final String parentId;
 
@@ -14,6 +14,11 @@ class CategoryModel {
     required this.image,
     required this.isFeatured,
   });
+
+  String get imageUrl => image;
+  set imageUrl(String value) {
+    image = value;
+  }
 
   //empty helper function
   factory CategoryModel.empty() {

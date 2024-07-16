@@ -33,6 +33,7 @@ class RoundedCustomImage extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: Sizes.sm),
         width: width,
         height: height,
         padding: padding,
